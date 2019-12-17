@@ -27,14 +27,18 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (username.equals("admin") &&
                         password.equals("admin")) {
                     Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SplashScreenActivity.this, DashboardActivity.class);
+                    startActivity(intent);
+                    finish();
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Either Username and Password is incorrect",
                             Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SplashScreenActivity.this, Login.class);
+                    startActivity(intent);
+                    finish();
                 }
-                Intent intent = new Intent(SplashScreenActivity.this, Login.class);
-                startActivity(intent);
-                finish();
+
             }
 
         }, 2000);

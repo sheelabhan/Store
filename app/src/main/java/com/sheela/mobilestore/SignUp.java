@@ -36,6 +36,8 @@ public class SignUp extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if(TextUtils.isEmpty(etFullName.getText()))
                 {
                     etFullName.setError("Please enter Full Name");
