@@ -24,6 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
                 String username = sharedPreferences.getString("username", "");
                 String password = sharedPreferences.getString("password", "");
+                //if condition
                 if (username.equals("admin") &&
                         password.equals("admin")) {
                     Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
