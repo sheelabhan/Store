@@ -3,7 +3,7 @@ package com.sheela.mobilestore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,8 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Objects;
-import java.util.ResourceBundle;
+import com.sheela.mobilestore.StrictModeClass.StrictMode;
+import com.sheela.mobilestore.api.UserAPI;
+import com.sheela.mobilestore.bll.LoginBLL;
+import com.sheela.mobilestore.model.username;
+import com.sheela.mobilestore.serverresponse.SignUpResponse;
+import com.sheela.mobilestore.url.Url;
+
+
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     private EditText etUserName, etPassword;
@@ -21,21 +31,18 @@ public class Login extends AppCompatActivity {
     private TextView txtRegister;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        etUserName=findViewById(R.id.etUserName);
-        etPassword=findViewById(R.id.etPassword);
-        txtRegister=findViewById(R.id.txtRegister);
-        btnLogin=findViewById(R.id.btnLogin);
+        etUserName = findViewById(R.id.etUserName);
+        etPassword = findViewById(R.id.etPassword);
+        txtRegister = findViewById(R.id.txtRegister);
+        btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                saveData();
                 if (TextUtils.isEmpty(etUserName.getText())) {
                     etUserName.setError("Please enter User Name");
                     etUserName.requestFocus();
@@ -47,14 +54,9 @@ public class Login extends AppCompatActivity {
                     return;
 
                 }
-                String Username, Password;
-                Username = etUserName.getText().toString();
-                Password = etPassword.getText().toString();
-
-
-                if (Objects.equals(Username, "admin") && Objects.equals(Password, "admin")) {
-//                   // Toast.makeText(getApplicationContext(), "redirecting...", Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent(Login.this, MainActivity.class);
+                startActivity(intent);
+                login();
             }
 
 
@@ -64,25 +66,44 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent SignUpintent= new Intent(Login.this, SignUp.class);
+                Intent SignUpintent = new Intent(Login.this, SignUp.class);
                 startActivity(SignUpintent);
 
             }
         });
     }
 
-    private void saveData() {
+    private void login() {
+        String username = etUserName.getText().toString();
+        String password = etPassword.getText().toString();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("username",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        LoginBLL loginBLL = new LoginBLL();
+        com.sheela.mobilestore.model.username Username = new username(username, password);
+        StrictMode.StrictMode();
+        UserAPI userapi = Url.getInstance().create(UserAPI.class);
+        Call<SignUpResponse> userCall = userapi.checklogin(Username);
+        userCall.enqueue(new Callback<SignUpResponse>() {
+            @Override
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(Login.this, "Code", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Url.token += response.body().getToken();
+                Intent intent = new Intent(Login.this, MainActivity.class);
+            }
 
-        editor.putString("username", etUserName.getText().toString());
-        editor.putString("password",etPassword.getText().toString());
-        editor.commit();
-
+            @Override
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                Toast.makeText(Login.this, "error is =" + t.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
+
 
 
 

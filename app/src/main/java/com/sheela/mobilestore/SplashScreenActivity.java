@@ -17,32 +17,16 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         // imgLogo= findViewById(R.id.imgLogo);
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-                String username = sharedPreferences.getString("username", "");
-                String password = sharedPreferences.getString("password", "");
-                //if condition
-                if (username.equals("admin") &&
-                        password.equals("admin")) {
-                    Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SplashScreenActivity.this, DashboardActivity.class);
-                    startActivity(intent);
-                    finish();
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "Either Username and Password is incorrect",
-                            Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SplashScreenActivity.this, Login.class);
-                    startActivity(intent);
-                    finish();
-                }
-
+                Intent intent = new Intent(SplashScreenActivity.this, Login.class);
+                startActivity(intent);
+                finish();
             }
-
-        }, 2000);
+        },1000);
     }
 }
 
