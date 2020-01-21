@@ -70,24 +70,24 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
 
-//                if(TextUtils.isEmpty(etfirstName.getText()))
-//                {
-//                    etfirstName.setError("Please enter Full Name");
-//                    etfirstName.requestFocus();
-//                    return;
-//
-//                }
-//                else if(TextUtils.isEmpty(etlastName.getText())) {
-//                    etlastName.setError("Please enter User Name");
-//                    etlastName.requestFocus();
-//                    return;
-//                }
-//                else  if(TextUtils.isEmpty(etUserName.getText())) {
-//                    etUserName.setError("Please enter User Name");
-//                    etUserName.requestFocus();
-//                    return;
-//
-//                }
+                if(TextUtils.isEmpty(etfirstName.getText()))
+                {
+                    etfirstName.setError("Please enter Full Name");
+                    etfirstName.requestFocus();
+                    return;
+
+                }
+                else if(TextUtils.isEmpty(etlastName.getText())) {
+                    etlastName.setError("Please enter User Name");
+                    etlastName.requestFocus();
+                    return;
+                }
+                else  if(TextUtils.isEmpty(etUserName.getText())) {
+                    etUserName.setError("Please enter User Name");
+                    etUserName.requestFocus();
+                    return;
+
+           }
                 if (etPassword.getText().toString().equals((etPassword.getText().toString()))) {
                     saveImageOnly();
                     signup();

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MobileStore</string>
+
+    <string name="menu_home">Mobile
+    </string>
+    <string name="title_favourites">WishList</string>
+    <string name="title_basket"> About us</string>
+    <string name="title_history">Order History</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_more">More</string>
 </resources>

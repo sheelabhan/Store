@@ -15,6 +15,9 @@
         android:src="@drawable/image" />
 
     <EditText
+        android:drawableLeft="@drawable/username"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:id="@+id/etfirstName"
         android:inputType="text"
         android:layout_width="match_parent"
@@ -23,6 +26,9 @@
         android:layout_marginTop="20dp"
         android:hint="First Name"/>
     <EditText
+        android:drawableLeft="@drawable/username"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:id="@+id/etlastName"
         android:inputType="text"
         android:layout_width="match_parent"
@@ -32,6 +38,9 @@
         android:hint="Last Name"/>
 
     <EditText
+        android:drawableLeft="@drawable/phone"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:id="@+id/etPhoneNo"
           android:inputType="number"
         android:layout_width="match_parent"
@@ -40,6 +49,9 @@
         android:textSize="30sp"
         android:hint="Phone Number"/>
     <EditText
+        android:drawableLeft="@drawable/username"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:id="@+id/etUserName"
         android:inputType="text"
         android:layout_width="match_parent"
@@ -48,6 +60,9 @@
         android:layout_marginTop="20dp"
         android:textSize="30sp"/>
     <EditText
+        android:drawableLeft="@drawable/password"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:inputType="textPassword"
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
@@ -56,6 +71,9 @@
         android:layout_marginTop="20dp"
         android:hint="Password"/>
     <EditText
+       android:drawableLeft="@drawable/password"
+        android:drawablePadding="20dp"
+        android:paddingLeft="20dp"
         android:inputType="textPassword"
         android:id="@+id/etConfirmPassword"
         android:layout_width="match_parent"
@@ -68,12 +86,13 @@
 
 
     <Button
+        android:background="@drawable/button"
         android:id="@+id/btnRegister"
         android:layout_width="244dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:background="#8E2323"
+
         android:text="Sign Up"
         android:textSize="30dp" />
 

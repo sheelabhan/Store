@@ -17,6 +17,7 @@ import com.sheela.mobilestore.api.UserAPI;
 import com.sheela.mobilestore.bll.LoginBLL;
 import com.sheela.mobilestore.model.username;
 import com.sheela.mobilestore.serverresponse.SignUpResponse;
+import com.sheela.mobilestore.ui.home.HomeFragment;
 import com.sheela.mobilestore.url.Url;
 
 
@@ -54,7 +55,7 @@ public class Login extends AppCompatActivity {
                     return;
 
                 }
-                Intent intent = new Intent(Login.this, MainActivity.class);
+                Intent intent = new Intent(Login.this, HomeActivity.class);
                 startActivity(intent);
                 login();
             }
@@ -91,7 +92,7 @@ public class Login extends AppCompatActivity {
                 }
                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 Url.token += response.body().getToken();
-                Intent intent = new Intent(Login.this, MainActivity.class);
+                Intent intent = new Intent(Login.this, HomeActivity.class);
             }
 
             @Override
