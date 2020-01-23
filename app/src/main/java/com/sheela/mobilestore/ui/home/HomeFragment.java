@@ -1,26 +1,41 @@
 package com.sheela.mobilestore.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.sheela.mobilestore.R;
+import com.sheela.mobilestore.adapter.ContactsAdapter;
+import com.sheela.mobilestore.adapter.SellingAdapter;
+import com.sheela.mobilestore.api.BestSellingApi;
+import com.sheela.mobilestore.model.Contacts;
+import com.sheela.mobilestore.model.Selling;
+import com.sheela.mobilestore.url.Url;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
-public class HomeFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class HomeFragment extends Fragment {
+    List<Selling> sellingList;
+    SellingAdapter SellingAdapter;
+    RecyclerView recyclerView1,recyclerView2;
+    ImageView imgProfile;
     private int[] mImages = new int[]{
             R.drawable.slider2, R.drawable.slider3, R.drawable.slider1
     };
@@ -34,6 +49,9 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         carouselView = view.findViewById(R.id.caral);
+        recyclerView1 = view.findViewById(R.id.recycleview1);
+        recyclerView2 = view.findViewById(R.id.recyclerview2);
+        imgProfile = view.findViewById(R.id.imgProfile);
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
             @Override
@@ -47,7 +65,48 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), mImageTitle[position], Toast.LENGTH_SHORT).show();
             }
         });
+        List<Contacts> contactsList = new ArrayList<>();
+        contactsList.add(new Contacts("Cash On Delivery","Free cash on Delivery Available",R.drawable.reone));
+        contactsList.add(new Contacts("Best Price","Best and Lowest price Guranteed",R.drawable.retwo));
+        contactsList.add(new Contacts("2 Hour Delivery","We Deliver in 2 Hours at Selected",
+                R.drawable.rethree));
+        contactsList.add(new Contacts("100% Original Products","We Sell Only Original Products",
+                R.drawable.refour));
+        ContactsAdapter contactsAdapter = new ContactsAdapter(getContext(), contactsList);
+        recyclerView2.setAdapter(contactsAdapter);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        bestselling();
 
         return view;
+    }
+
+    private void bestselling() {
+        sellingList = new ArrayList();
+        BestSellingApi bestSellingApi = Url.getInstance().create(BestSellingApi.class);
+
+        Call<List<Selling>> listCall = bestSellingApi.getbestsellings();
+
+        listCall.enqueue(new Callback<List<Selling>>() {
+            @Override
+            public void onResponse(Call<List<Selling>> call, Response<List<Selling>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Error" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Selling> sellingList = response.body();
+                SellingAdapter = new SellingAdapter(getContext(), sellingList);
+                recyclerView1.setAdapter(SellingAdapter);
+                recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+            }
+
+            @Override
+            public void onFailure(Call<List<Selling>> call, Throwable t) {
+
+                Log.d("Error message", "Error" + t.getLocalizedMessage());
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

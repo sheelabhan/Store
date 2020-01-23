@@ -21,7 +21,6 @@ import com.sheela.mobilestore.ui.home.HomeFragment;
 import com.sheela.mobilestore.url.Url;
 
 
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,7 +76,7 @@ public class Login extends AppCompatActivity {
     private void login() {
         String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
-//shila
+
         LoginBLL loginBLL = new LoginBLL();
         com.sheela.mobilestore.model.username Username = new username(username, password);
         StrictMode.StrictMode();
