@@ -43,6 +43,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                login();
 
                 if (TextUtils.isEmpty(etUserName.getText())) {
                     etUserName.setError("Please enter User Name");
@@ -55,9 +56,7 @@ public class Login extends AppCompatActivity {
                     return;
 
                 }
-                Intent intent = new Intent(Login.this, HomeActivity.class);
-                startActivity(intent);
-                login();
+
             }
 
 
@@ -93,6 +92,7 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 Url.token += response.body().getToken();
                 Intent intent = new Intent(Login.this, HomeActivity.class);
+                startActivity(intent);
             }
 
             @Override
