@@ -2,8 +2,10 @@ package com.sheela.mobilestore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,13 +23,18 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
+
             @Override
             public void run() {
+
                 Intent intent = new Intent(SplashScreenActivity.this, Login.class);
                 startActivity(intent);
                 finish();
             }
-        },1000);
+        }, 1000);
+
     }
 }
+
+
 
