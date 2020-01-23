@@ -25,7 +25,7 @@ public class SellingAdapter extends RecyclerView.Adapter<SellingAdapter.SellingV
 
     Context mContext;
     List<Selling> sellingList;
-    public SellingAdapter(Context mContext,List<Selling> sellingList)
+    public SellingAdapter(Context mContext, List<Selling> sellingList)
     {
         this.mContext=mContext;
         this.sellingList=sellingList;

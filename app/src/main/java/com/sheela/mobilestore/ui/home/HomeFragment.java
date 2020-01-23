@@ -32,15 +32,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-    List<Selling> sellingList;
-    SellingAdapter SellingAdapter;
-    RecyclerView recyclerView1,recyclerView2;
+    List<Selling> sellingsList;
+    SellingAdapter sellingAdapter;
+    RecyclerView recyclerView1, recyclerView2;
     ImageView imgProfile;
     private int[] mImages = new int[]{
             R.drawable.slider2, R.drawable.slider3, R.drawable.slider1
     };
     private String[] mImageTitle = new String[]{
-            "F11", "V17 Pro", "Samsung"
+            "F11", "V17 Pro", "ssamsung"
     };
     CarouselView carouselView;
 
@@ -66,11 +66,11 @@ public class HomeFragment extends Fragment {
             }
         });
         List<Contacts> contactsList = new ArrayList<>();
-        contactsList.add(new Contacts("Cash On Delivery","Free cash on Delivery Available",R.drawable.reone));
-        contactsList.add(new Contacts("Best Price","Best and Lowest price Guranteed",R.drawable.retwo));
-        contactsList.add(new Contacts("2 Hour Delivery","We Deliver in 2 Hours at Selected",
+        contactsList.add(new Contacts("Cash On Delivery", "Free cash on Delivery Available", R.drawable.reone));
+        contactsList.add(new Contacts("Best Price", "Best and Lowest price Guranteed", R.drawable.retwo));
+        contactsList.add(new Contacts("2 Hour Delivery", "We Deliver in 2 Hours at Selected",
                 R.drawable.rethree));
-        contactsList.add(new Contacts("100% Original Products","We Sell Only Original Products",
+        contactsList.add(new Contacts("100% Original Products", "We Sell Only Original Products",
                 R.drawable.refour));
         ContactsAdapter contactsAdapter = new ContactsAdapter(getContext(), contactsList);
         recyclerView2.setAdapter(contactsAdapter);
@@ -82,29 +82,27 @@ public class HomeFragment extends Fragment {
     }
 
     private void bestselling() {
-        sellingList = new ArrayList();
-        BestSellingApi bestSellingApi = Url.getInstance().create(BestSellingApi.class);
-
-        Call<List<Selling>> listCall = bestSellingApi.getbestsellings();
-
-        listCall.enqueue(new Callback<List<Selling>>() {
+    sellingsList = new ArrayList<>();
+        BestSellingApi s = Url.getInstance().create(BestSellingApi.class);
+//
+        Call<List<Selling>> ListCall = s.getbestselling();
+        ListCall.enqueue(new Callback<List<Selling>>() {
             @Override
             public void onResponse(Call<List<Selling>> call, Response<List<Selling>> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(getContext(), "Error" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                List<Selling> sellingList = response.body();
-                SellingAdapter = new SellingAdapter(getContext(), sellingList);
-                recyclerView1.setAdapter(SellingAdapter);
+                List<Selling> detailsList1 = response.body();
+           sellingAdapter = new SellingAdapter(getContext(), detailsList1);
+                recyclerView1.setAdapter(sellingAdapter);
                 recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerView1.setHasFixedSize(true);
             }
 
             @Override
             public void onFailure(Call<List<Selling>> call, Throwable t) {
-
-                Log.d("Error message", "Error" + t.getLocalizedMessage());
+                Log.d("Error Message", "Error " + t.getLocalizedMessage());
                 Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }
         });

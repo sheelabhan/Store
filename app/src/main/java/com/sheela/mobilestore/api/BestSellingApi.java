@@ -13,11 +13,11 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface BestSellingApi {
-    @GET("selling")
-    Call<List<Selling>> getbestsellings();
+    @GET("bestselling")
+    Call<List<Selling>> getbestselling();
     @Multipart
     @POST("upload")
     Call<Selling> uploadImage(@Part MultipartBody.Part img);
-    @GET("selling")
+    @GET("bestselling")
     Call<Selling> getImage(@Header("Authorization") String id);
 }
