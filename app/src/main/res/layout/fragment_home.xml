@@ -20,6 +20,21 @@
             app:slideInterval="3000"
             app:strokeColor="#ede4ed"
             app:strokeWidth="1dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Samsung Phones"
+            android:fontFamily="cursive"
+            android:textSize="30sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp"
+            android:scrollbars="horizontal"
+            app:fastScrollEnabled="false"/>
+
 
         <ImageView
             android:layout_width="match_parent"

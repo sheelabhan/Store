@@ -40,11 +40,11 @@ public class CheckConnectionActivity extends AppCompatActivity {
 
             Intent intent = new Intent(CheckConnectionActivity.this, Login.class);
             startActivity(intent);
-            Toast.makeText(this, "Internet is available ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Wifi is connected ", Toast.LENGTH_LONG).show();
 
 
         } else {
-            Toast.makeText(this, "Internet is not available ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Wifi is not connected", Toast.LENGTH_LONG).show();
 
         }
     }}
