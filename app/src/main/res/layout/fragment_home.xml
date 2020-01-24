@@ -37,11 +37,12 @@
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false"/>
 
-
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/cash" />
+            android:layout_height="209dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/mobilee" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +79,26 @@
             android:layout_marginTop="1dp"
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/cash" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:text="Oppo Phones"
+            android:fontFamily="cursive"
+            android:textSize="35sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recyclerview4"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp"
+            android:scrollbars="horizontal"
+            app:fastScrollEnabled="false"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -104,6 +124,7 @@
                 android:scrollbars="horizontal"
                 app:fastScrollEnabled="false"/>
         </LinearLayout>
+
         </LinearLayout>
 
 

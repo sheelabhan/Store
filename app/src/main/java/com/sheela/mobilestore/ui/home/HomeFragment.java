@@ -16,13 +16,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.adapter.ContactsAdapter;
 import com.sheela.mobilestore.adapter.LaunchedAdapter;
+import com.sheela.mobilestore.adapter.OppoAdapter;
 import com.sheela.mobilestore.adapter.SamsungAdapter;
 import com.sheela.mobilestore.adapter.SellingAdapter;
 import com.sheela.mobilestore.api.BestSellingApi;
 import com.sheela.mobilestore.api.LaunchedApi;
+import com.sheela.mobilestore.api.OppoApi;
 import com.sheela.mobilestore.api.SamsungApi;
 import com.sheela.mobilestore.model.Contacts;
 import com.sheela.mobilestore.model.Launched;
+import com.sheela.mobilestore.model.Oppo;
 import com.sheela.mobilestore.model.Samsung;
 import com.sheela.mobilestore.model.Selling;
 import com.sheela.mobilestore.url.Url;
@@ -44,8 +47,10 @@ public class HomeFragment extends Fragment {
   SamsungAdapter samsungAdapter;
     List<Launched> launchedList;
    LaunchedAdapter launchedAdapter;
-    RecyclerView  recyclerView,recyclerView1, recyclerView2,recyclerView3;
-    ImageView imgProfile,imgSamsung,imgsheela;
+    List<Oppo> oppoList;
+  OppoAdapter oppoAdapter;
+    RecyclerView  recyclerView,recyclerView1, recyclerView2,recyclerView3,recyclerView4;
+    ImageView imgProfile,imgSamsung,imgsheela,imgOppo;
     private int[] mImages = new int[]{
             R.drawable.slider2, R.drawable.slider3, R.drawable.slider1
     };
@@ -64,8 +69,10 @@ public class HomeFragment extends Fragment {
         recyclerView1 = view.findViewById(R.id.recycleview1);
         recyclerView2 = view.findViewById(R.id.recyclerview2);
         recyclerView3 = view.findViewById(R.id.recyclerview3);
+        recyclerView4=view.findViewById(R.id.recyclerview4);
         imgsheela=view.findViewById(R.id.imgsheela);
         imgProfile = view.findViewById(R.id.imgProfile);
+        imgOppo = view.findViewById(R.id.imgOppo);
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
             @Override
@@ -93,6 +100,7 @@ public class HomeFragment extends Fragment {
         bestselling();
         samsung();
         justlaunched();
+        oppo();
 
         return view;
     }
@@ -124,8 +132,8 @@ public class HomeFragment extends Fragment {
         });
     }
     private void samsung() {
-       samsungList = new ArrayList<>();
-       SamsungApi samsungApi = Url.getInstance().create(SamsungApi.class);
+        samsungList = new ArrayList<>();
+        SamsungApi samsungApi = Url.getInstance().create(SamsungApi.class);
 //
         Call<List<Samsung>> ListCall1 = samsungApi.getsamsung();
         ListCall1.enqueue(new Callback<List<Samsung>>() {
@@ -136,7 +144,7 @@ public class HomeFragment extends Fragment {
                     return;
                 }
                 List<Samsung> detailsList= response.body();
-              samsungAdapter = new SamsungAdapter(getContext(), detailsList);
+                samsungAdapter = new SamsungAdapter(getContext(), detailsList);
                 recyclerView.setAdapter(samsungAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
                 recyclerView.setHasFixedSize(true);
@@ -170,6 +178,32 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Launched>> call, Throwable t) {
+                Log.d("Error Message", "Error " + t.getLocalizedMessage());
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void oppo() {
+      oppoList= new ArrayList<>();
+       OppoApi oppoApi = Url.getInstance().create(OppoApi.class);
+//
+        Call<List<Oppo>> ListCall4 = oppoApi.getoppo();
+        ListCall4.enqueue(new Callback<List<Oppo>>() {
+            @Override
+            public void onResponse(Call<List<Oppo>> call, Response<List<Oppo>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Error" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<Oppo> detailsList4= response.body();
+              oppoAdapter= new OppoAdapter(getContext(), detailsList4);
+                recyclerView4.setAdapter(oppoAdapter);
+                recyclerView4.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerView4.setHasFixedSize(true);
+            }
+
+            @Override
+            public void onFailure(Call<List<Oppo>> call, Throwable t) {
                 Log.d("Error Message", "Error " + t.getLocalizedMessage());
                 Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }
