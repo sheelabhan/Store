@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="212dp"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imgsheela"
+            android:layout_width="105dp"
+            android:layout_height="102dp"
+            android:src="@drawable/sssh" />
+
+        <TextView
+            android:id="@+id/tvNaamee"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgsheela"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Name"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvLoc"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgsheela"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="31dp"
+            android:text="Location"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tvCosst"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgsheela"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="79dp"
+            android:text="Cost"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

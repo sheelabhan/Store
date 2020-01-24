@@ -15,11 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.adapter.ContactsAdapter;
+import com.sheela.mobilestore.adapter.LaunchedAdapter;
 import com.sheela.mobilestore.adapter.SamsungAdapter;
 import com.sheela.mobilestore.adapter.SellingAdapter;
 import com.sheela.mobilestore.api.BestSellingApi;
+import com.sheela.mobilestore.api.LaunchedApi;
 import com.sheela.mobilestore.api.SamsungApi;
 import com.sheela.mobilestore.model.Contacts;
+import com.sheela.mobilestore.model.Launched;
 import com.sheela.mobilestore.model.Samsung;
 import com.sheela.mobilestore.model.Selling;
 import com.sheela.mobilestore.url.Url;
@@ -39,8 +42,10 @@ public class HomeFragment extends Fragment {
     SellingAdapter sellingAdapter;
     List<Samsung> samsungList;
   SamsungAdapter samsungAdapter;
-    RecyclerView  recyclerView,recyclerView1, recyclerView2;
-    ImageView imgProfile,imgSamsung;
+    List<Launched> launchedList;
+   LaunchedAdapter launchedAdapter;
+    RecyclerView  recyclerView,recyclerView1, recyclerView2,recyclerView3;
+    ImageView imgProfile,imgSamsung,imgsheela;
     private int[] mImages = new int[]{
             R.drawable.slider2, R.drawable.slider3, R.drawable.slider1
     };
@@ -58,6 +63,8 @@ public class HomeFragment extends Fragment {
         recyclerView=view.findViewById(R.id.recycleview);
         recyclerView1 = view.findViewById(R.id.recycleview1);
         recyclerView2 = view.findViewById(R.id.recyclerview2);
+        recyclerView3 = view.findViewById(R.id.recyclerview3);
+        imgsheela=view.findViewById(R.id.imgsheela);
         imgProfile = view.findViewById(R.id.imgProfile);
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
@@ -85,6 +92,7 @@ public class HomeFragment extends Fragment {
 
         bestselling();
         samsung();
+        justlaunched();
 
         return view;
     }
@@ -136,6 +144,32 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Samsung>> call, Throwable t) {
+                Log.d("Error Message", "Error " + t.getLocalizedMessage());
+                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void justlaunched() {
+       launchedList= new ArrayList<>();
+       LaunchedApi launchedApi = Url.getInstance().create(LaunchedApi.class);
+//
+        Call<List<Launched>> ListCall3 = launchedApi.getlaunched();
+        ListCall3.enqueue(new Callback<List<Launched>>() {
+            @Override
+            public void onResponse(Call<List<Launched>> call, Response<List<Launched>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Error" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<Launched> detailsList3= response.body();
+             launchedAdapter = new LaunchedAdapter(getContext(), detailsList3);
+                recyclerView3.setAdapter(launchedAdapter);
+                recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerView3.setHasFixedSize(true);
+            }
+
+            @Override
+            public void onFailure(Call<List<Launched>> call, Throwable t) {
                 Log.d("Error Message", "Error " + t.getLocalizedMessage());
                 Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }

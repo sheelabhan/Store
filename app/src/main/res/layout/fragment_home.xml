@@ -23,10 +23,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:text="Samsung Phones"
             android:fontFamily="cursive"
-            android:textSize="30sp"/>
+            android:textSize="35sp"/>
         <androidx.recyclerview.widget.RecyclerView
+
             android:id="@+id/recycleview"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
@@ -40,6 +42,21 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:src="@drawable/cash" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Just Launched Phones"
+            android:fontFamily="sans-serif-black"
+            android:textSize="20sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview3"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp"
+            android:scrollbars="horizontal"
+            app:fastScrollEnabled="false"/>
+
 
         <ImageView
             android:layout_width="match_parent"
@@ -74,7 +91,7 @@
                 android:layout_height="wrap_content"
 
                 android:textSize="20dp"
-               android:fontFamily="sans-serif-black"
+                android:fontFamily="sans-serif-black"
                 android:text="Reason's Why Choose Us"/>
 
             <androidx.recyclerview.widget.RecyclerView
