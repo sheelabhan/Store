@@ -1,4 +1,4 @@
-package com.sheela.mobilestore.ui.favourites;
+package com.sheela.mobilestore.ui.contactus;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

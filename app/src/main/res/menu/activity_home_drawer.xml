@@ -11,15 +11,15 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/fav"
-            android:title="@string/title_favourites" />
+            android:title="@string/title_contact" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/basket"
-            android:title="@string/title_basket" />
+            android:title="@string/title_about" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/history"
-            android:title="@string/title_history" />
+            android:title="@string/title_cart" />
 
 
         <item

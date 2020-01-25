@@ -99,6 +99,11 @@
             android:layout_marginTop="1dp"
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="209dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -124,6 +129,7 @@
                 android:scrollbars="horizontal"
                 app:fastScrollEnabled="false"/>
         </LinearLayout>
+
 
         </LinearLayout>
 
