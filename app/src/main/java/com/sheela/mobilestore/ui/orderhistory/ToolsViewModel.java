@@ -1,4 +1,4 @@
-package com.sheela.mobilestore.ui.history;
+package com.sheela.mobilestore.ui.orderhistory;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
