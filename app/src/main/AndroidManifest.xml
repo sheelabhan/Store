@@ -22,11 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".cart.SellingAddToCart"></activity>
+        <activity android:name=".activity.CardDetailedActivity"></activity>
+        <activity android:name=".cart.SellingAddToCart" />
         <activity android:name=".cart.LaunchedAddToCart" />
         <activity android:name=".cart.SamsungAddToCart" />
         <activity android:name=".cart.OppoAddToCart" />
-        <activity android:name=".CheckConnectionActivity" />
+        <activity android:name=".activity.CheckConnectionActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -44,19 +45,19 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".ui.DashboardActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.HomeActivity"
             android:label="@string/title_more"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.Login" />
+        <activity android:name=".activity.SignUp" />
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 </manifest>

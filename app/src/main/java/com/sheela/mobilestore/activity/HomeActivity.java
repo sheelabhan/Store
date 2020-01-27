@@ -1,4 +1,4 @@
-package com.sheela.mobilestore;
+package com.sheela.mobilestore.activity;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.sheela.mobilestore.R;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 

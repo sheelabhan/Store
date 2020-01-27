@@ -1,4 +1,4 @@
-package com.sheela.mobilestore;
+package com.sheela.mobilestore.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +14,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
 import com.sheela.mobilestore.api.UserAPI;
 import com.sheela.mobilestore.model.User;
@@ -35,8 +34,6 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.sheela.mobilestore.url.Url.imagePath;
 
 public class SignUp extends AppCompatActivity {
     private EditText etfirstName, etlastName, etUserName, etPassword, etConfirmPassword, etPhoneNo;

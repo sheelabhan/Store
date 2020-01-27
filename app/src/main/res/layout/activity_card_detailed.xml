@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    tools:context=".activity.CardDetailedActivity">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/oppo"
+        android:id="@+id/imgview"
+        android:layout_marginTop="25dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:fontFamily="sans-serif-black"
+        android:textSize="20sp"
+        android:id="@+id/name1"
+        android:layout_toEndOf="@+id/imgview"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="product_name"
+        android:id="@+id/product"
+        android:textSize="20sp"
+        android:layout_toEndOf="@+id/imgview"
+        android:layout_below="@+id/name1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cost"
+        android:id="@+id/cost1"
+        android:textSize="20sp"
+        android:layout_toEndOf="@+id/imgview"
+        android:layout_below="@id/product"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        />
+</RelativeLayout>

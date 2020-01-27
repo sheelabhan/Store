@@ -1,11 +1,10 @@
-package com.sheela.mobilestore;
+package com.sheela.mobilestore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
 
-import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -18,14 +17,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
 import com.sheela.mobilestore.api.UserAPI;
 import com.sheela.mobilestore.bll.LoginBLL;
 import com.sheela.mobilestore.createchannel.CreateChannel;
-import com.sheela.mobilestore.model.User;
 import com.sheela.mobilestore.model.username;
 import com.sheela.mobilestore.serverresponse.SignUpResponse;
-import com.sheela.mobilestore.ui.home.HomeFragment;
 import com.sheela.mobilestore.url.Url;
 
 

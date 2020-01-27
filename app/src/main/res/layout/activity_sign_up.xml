@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFB6C1"
-    tools:context=".SignUp">
+    tools:context=".activity.SignUp">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgsheela"
         android:layout_width="299dp"

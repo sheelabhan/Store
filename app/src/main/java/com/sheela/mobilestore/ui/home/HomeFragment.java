@@ -1,5 +1,7 @@
 package com.sheela.mobilestore.ui.home;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,6 +67,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         carouselView = view.findViewById(R.id.caral);
         imgSamsung= view.findViewById(R.id.imgSamsung);
+
 
         recyclerview=view.findViewById(R.id.recyclerview);
         recyclerview1=view.findViewById(R.id.recyclerview1);

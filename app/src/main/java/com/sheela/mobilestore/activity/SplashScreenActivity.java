@@ -1,16 +1,13 @@
-package com.sheela.mobilestore;
+package com.sheela.mobilestore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.sheela.mobilestore.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
     ImageView imgLogo;

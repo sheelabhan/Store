@@ -1,4 +1,4 @@
-package com.sheela.mobilestore;
+package com.sheela.mobilestore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.sheela.mobilestore.R;
 
 public class CheckConnectionActivity extends AppCompatActivity {
 
