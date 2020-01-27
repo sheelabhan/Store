@@ -24,19 +24,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SamsungAddToCart extends AppCompatActivity {
-    private TextView naame,loocation,coost;
-    private ImageView immg;
-    private Button btnaddtocartsamsung;
+public class LaunchedAddToCart extends AppCompatActivity {
+    private TextView namee,loocationn,cosst;
+    private ImageView imggg;
+    private Button btnaddtocartlaunched;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_samsun_add_to_cart);
-        naame=findViewById(R.id.namesamsungddtocart);
-        loocation=findViewById(R.id.locationsamsungaddtocart);
-        coost=findViewById(R.id.costsamsungaddtocart);
-        immg=findViewById(R.id.addsamsung);
-        btnaddtocartsamsung=findViewById(R.id.btnaddtocartsamsung);
+        setContentView(R.layout.activity_launched_add_to_cart);
+        namee=findViewById(R.id.namelaunchedaddtocart);
+        loocationn=findViewById(R.id.locationlaunchedaddtocart);
+       cosst=findViewById(R.id.costlaunchedaddtocart);
+        imggg=findViewById(R.id.addlaunched);
+        btnaddtocartlaunched=findViewById(R.id.btnaddtocartsamsung);
 
         Bundle bundle=getIntent().getExtras();
 
@@ -48,19 +48,19 @@ public class SamsungAddToCart extends AppCompatActivity {
 
             try {
                 URL url=new URL(imgPath);
-                immg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+                imggg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
             }catch (Exception e){
                 e.printStackTrace();
             }
-            naame.setText(bundle.getString("name"));
-            loocation.setText(bundle.getString("location"));
-            coost.setText(bundle.getString("cost"));
+            namee.setText(bundle.getString("name"));
+            loocationn.setText(bundle.getString("location"));
+            cosst.setText(bundle.getString("cost"));
         }
 
-        btnaddtocartsamsung.setOnClickListener(new View.OnClickListener() {
+      btnaddtocartlaunched.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(SamsungAddToCart.this);
+                AlertDialog.Builder builder=new AlertDialog.Builder(LaunchedAddToCart.this);
                 builder.setMessage("Are you sure")
                         .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
@@ -81,8 +81,8 @@ public class SamsungAddToCart extends AppCompatActivity {
 
         MyCartApi myCartApi= Url.getInstance().create(MyCartApi.class);
         String user_name = "sheela";
-        String product_name = naame.getText().toString();
-        String prduct_cost=coost.getText().toString();
+        String product_name = namee.getText().toString();
+        String prduct_cost=cosst.getText().toString();
 
         Cart cart=new Cart(user_name,product_name,prduct_cost);
 
@@ -91,12 +91,12 @@ public class SamsungAddToCart extends AppCompatActivity {
         voidCall.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(SamsungAddToCart.this, "Item added to cart successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LaunchedAddToCart.this, "Item added to cart successfully", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(SamsungAddToCart.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LaunchedAddToCart.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

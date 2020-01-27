@@ -1,6 +1,7 @@
 package com.sheela.mobilestore.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
+import com.sheela.mobilestore.cart.OppoAddToCart;
 import com.sheela.mobilestore.model.Contacts;
 import com.sheela.mobilestore.model.Launched;
 import com.sheela.mobilestore.model.Samsung;
@@ -62,7 +64,20 @@ public class LaunchedAdapter  extends RecyclerView.Adapter<LaunchedAdapter.Launc
         {
             e.printStackTrace();
         }
+        holder.imgsheela.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, OppoAddToCart.class);
+                intent.putExtra("image",launched.getImage());
+                intent.putExtra("name",launched.getName());
+                intent.putExtra("location",launched.getLocation());
+                intent.putExtra("cost",launched.getCost());
+
+                mContext.startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
