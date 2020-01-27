@@ -52,6 +52,7 @@ public class ToolsFragment extends Fragment {
         return root;
 
     }
+    //cart api code
     private void cart() {
        cartList = new ArrayList<>();
       CartApi cartApi = Url.getInstance().create(CartApi.class);
