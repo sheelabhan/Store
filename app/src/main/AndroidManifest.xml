@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".cart.LaunchedAddToCart"></activity>
+        <activity android:name=".cart.SellingAddToCart"></activity>
+        <activity android:name=".cart.LaunchedAddToCart" />
         <activity android:name=".cart.SamsungAddToCart" />
         <activity android:name=".cart.OppoAddToCart" />
         <activity android:name=".CheckConnectionActivity" />
