@@ -8,16 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sheela.mobilestore.OppoAddToCart;
+import com.sheela.mobilestore.cart.OppoAddToCart;
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
+import com.sheela.mobilestore.model.Cart;
 import com.sheela.mobilestore.model.Oppo;
-import com.sheela.mobilestore.model.Samsung;
 import com.sheela.mobilestore.url.Url;
 
 import java.io.IOException;
@@ -34,6 +33,8 @@ public class OppoAdapter extends RecyclerView.Adapter<OppoAdapter.OppoViewHolder
         this.mContext=mContext;
         this.oppoList=oppoList;
     }
+
+
 
     @NonNull
     @Override

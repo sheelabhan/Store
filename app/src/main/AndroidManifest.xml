@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OppoAddToCart"></activity>
+        <activity android:name=".cart.LaunchedAddToCart"></activity>
+        <activity android:name=".cart.SamsungAddToCart" />
+        <activity android:name=".cart.OppoAddToCart" />
         <activity android:name=".CheckConnectionActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

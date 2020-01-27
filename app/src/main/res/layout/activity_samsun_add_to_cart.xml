@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".cart.OppoAddToCart">
-
+    tools:context=".cart.SamsungAddToCart">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/mobile"
-        android:id="@+id/addoppo"
+        android:id="@+id/addsamsung"
         />
 
     <TextView
@@ -21,8 +20,8 @@
         android:fontFamily="sans-serif-black"
         android:hint="Name"
         android:textSize="20sp"
-        android:id="@+id/nameoppoaddtocart"
-        android:layout_below="@+id/addoppo"
+        android:id="@+id/namesamsungddtocart"
+        android:layout_below="@+id/addsamsung"
         android:gravity="center"
         android:layout_marginTop="30dp"
         />
@@ -30,21 +29,21 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/locationoppoaddtocart"
+        android:id="@+id/locationsamsungaddtocart"
         android:hint="oppo"
         android:textSize="20sp"
-        android:layout_below="@+id/nameoppoaddtocart"
-       android:gravity="center"
+        android:layout_below="@+id/namesamsungddtocart"
+        android:gravity="center"
         android:layout_marginTop="10dp"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/costoppoaddtocart"
+        android:id="@+id/costsamsungaddtocart"
         android:hint="20000"
         android:textSize="20sp"
-        android:layout_below="@+id/locationoppoaddtocart"
+        android:layout_below="@+id/locationsamsungaddtocart"
         android:gravity="center"
         android:layout_marginTop="10dp"
         />
@@ -54,11 +53,11 @@
 
         android:background="@drawable/button"
         android:layout_height="wrap_content"
-        android:id="@+id/btnaddtocartoppo"
+        android:id="@+id/btnaddtocartsamsung"
         android:text="Add to Cart"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_below="@id/costoppoaddtocart"
+        android:layout_below="@id/costsamsungaddtocart"
         android:layout_marginTop="20dp"
         />
 

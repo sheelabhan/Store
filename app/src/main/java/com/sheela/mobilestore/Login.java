@@ -1,10 +1,15 @@
 package com.sheela.mobilestore;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
 
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,6 +21,7 @@ import android.widget.Toast;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
 import com.sheela.mobilestore.api.UserAPI;
 import com.sheela.mobilestore.bll.LoginBLL;
+import com.sheela.mobilestore.createchannel.CreateChannel;
 import com.sheela.mobilestore.model.User;
 import com.sheela.mobilestore.model.username;
 import com.sheela.mobilestore.serverresponse.SignUpResponse;
@@ -31,13 +37,19 @@ public class Login extends AppCompatActivity {
     private EditText etUserName, etPassword;
     private Button btnLogin;
     private TextView txtRegister;
-    private User user;
+    public NotificationManagerCompat notificationManagerCompat;
+    public SensorManager sensorManager;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
+
         etUserName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
         txtRegister = findViewById(R.id.txtRegister);
@@ -46,6 +58,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login();
+                sensorGyro();
 
                 if (TextUtils.isEmpty(etUserName.getText())) {
                     etUserName.setError("Please enter User Name");
@@ -74,11 +87,43 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+    private void sensorGyro() {
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        SensorEventListener sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+
+                if (event.values[1] < 0) {
+                    login();
+                    finish();
+
+                } else if (event.values[1] > 0) {
+
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+
+        if (sensor != null) {
+            sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        } else {
+            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
+        }
+    }
     //userlogin
 
     private void login() {
         final String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
+
 
 
 
@@ -99,14 +144,7 @@ public class Login extends AppCompatActivity {
                 Intent intent = new Intent(Login.this, HomeActivity.class);
                 startActivity(intent);
 
-                SharedPreferences sharedPreferences=getSharedPreferences("User",MODE_PRIVATE);
 
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-
-                Toast.makeText(Login.this, user.getUsername() , Toast.LENGTH_SHORT).show();
-                editor.putString("username", user.getUsername());
-
-                editor.commit();
             }
 
             @Override
@@ -117,6 +155,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
+    
 }
 
 

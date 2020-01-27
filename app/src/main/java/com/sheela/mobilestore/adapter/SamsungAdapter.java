@@ -1,6 +1,7 @@
 package com.sheela.mobilestore.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
+import com.sheela.mobilestore.cart.OppoAddToCart;
 import com.sheela.mobilestore.model.Samsung;
 import com.sheela.mobilestore.model.Selling;
 import com.sheela.mobilestore.url.Url;
@@ -45,22 +47,32 @@ public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungV
     public void onBindViewHolder(@NonNull SamsungAdapter.SamsungViewHolder holder, int position) {
 
 
-        final Samsung samsung= samsungList.get(position);
-        String imgPath= Url.imagePath+samsung.getImage();
+        final Samsung samsung = samsungList.get(position);
+        String imgPath = Url.imagePath + samsung.getImage();
         holder.tvNaame.setText(samsung.getName());
         holder.tvLoocation.setText(samsung.getLocation());
         holder.tvCoost.setText(samsung.getCost());
 
         StrictMode.StrictMode();
-        try{
-            URL url=new URL(imgPath);
-            holder.imgSamsung.setImageBitmap(BitmapFactory.decodeStream((InputStream)url.getContent()));
-        }
-
-        catch (IOException e)
-        {
+        try {
+            URL url = new URL(imgPath);
+            holder.imgSamsung.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+        holder.imgSamsung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, OppoAddToCart.class);
+                intent.putExtra("image",samsung.getImage());
+                intent.putExtra("name",samsung.getName());
+                intent.putExtra("location",samsung.getLocation());
+                intent.putExtra("cost",samsung.getCost());
+
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
