@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
    LaunchedAdapter launchedAdapter;
     List<Oppo> oppoList;
   OppoAdapter oppoAdapter;
-    RecyclerView  recyclerView,recyclerView1, recyclerView2,recyclerView3,recyclerView4;
+    RecyclerView  recyclerview,recyclerview1, recyclerview2,recyclerview3,recyclerview4;
     ImageView imgProfile,imgSamsung,imgsheela,imgOppo;
     private int[] mImages = new int[]{
             R.drawable.slider2, R.drawable.slider3, R.drawable.slider1
@@ -65,11 +65,12 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         carouselView = view.findViewById(R.id.caral);
         imgSamsung= view.findViewById(R.id.imgSamsung);
-        recyclerView=view.findViewById(R.id.recycleview);
-        recyclerView1 = view.findViewById(R.id.recycleview1);
-        recyclerView2 = view.findViewById(R.id.recyclerview2);
-        recyclerView3 = view.findViewById(R.id.recyclerview3);
-        recyclerView4=view.findViewById(R.id.recyclerview4);
+
+        recyclerview=view.findViewById(R.id.recyclerview);
+        recyclerview1=view.findViewById(R.id.recyclerview1);
+        recyclerview2=view.findViewById(R.id.recyclerview2);
+        recyclerview3=view.findViewById(R.id.recyclerview3);
+        recyclerview4=view.findViewById(R.id.recyclerview4);
         imgsheela=view.findViewById(R.id.imgsheela);
         imgProfile = view.findViewById(R.id.imgProfile);
         imgOppo = view.findViewById(R.id.imgOppo);
@@ -94,8 +95,8 @@ public class HomeFragment extends Fragment {
         contactsList.add(new Contacts("100% Original Products", "We Sell Only Original Products",
                 R.drawable.refour));
         ContactsAdapter contactsAdapter = new ContactsAdapter(getContext(), contactsList);
-        recyclerView2.setAdapter(contactsAdapter);
-        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerview2.setAdapter(contactsAdapter);
+        recyclerview2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         bestselling();
         samsung();
@@ -119,9 +120,9 @@ public class HomeFragment extends Fragment {
                 }
                 List<Selling> detailsList1 = response.body();
            sellingAdapter = new SellingAdapter(getContext(), detailsList1);
-                recyclerView1.setAdapter(sellingAdapter);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                recyclerView1.setHasFixedSize(true);
+                recyclerview1.setAdapter(sellingAdapter);
+                recyclerview1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerview1.setHasFixedSize(true);
             }
 
             @Override
@@ -145,9 +146,9 @@ public class HomeFragment extends Fragment {
                 }
                 List<Samsung> detailsList= response.body();
                 samsungAdapter = new SamsungAdapter(getContext(), detailsList);
-                recyclerView.setAdapter(samsungAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                recyclerView.setHasFixedSize(true);
+                recyclerview.setAdapter(samsungAdapter);
+                recyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerview.setHasFixedSize(true);
             }
 
             @Override
@@ -171,9 +172,9 @@ public class HomeFragment extends Fragment {
                 }
                 List<Launched> detailsList3= response.body();
              launchedAdapter = new LaunchedAdapter(getContext(), detailsList3);
-                recyclerView3.setAdapter(launchedAdapter);
-                recyclerView3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                recyclerView3.setHasFixedSize(true);
+                recyclerview3.setAdapter(launchedAdapter);
+                recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerview3.setHasFixedSize(true);
             }
 
             @Override
@@ -197,9 +198,9 @@ public class HomeFragment extends Fragment {
                 }
                 List<Oppo> detailsList4= response.body();
               oppoAdapter= new OppoAdapter(getContext(), detailsList4);
-                recyclerView4.setAdapter(oppoAdapter);
-                recyclerView4.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                recyclerView4.setHasFixedSize(true);
+                recyclerview4.setAdapter(oppoAdapter);
+                recyclerview4.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerview4.setHasFixedSize(true);
             }
 
             @Override

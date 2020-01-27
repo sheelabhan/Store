@@ -1,16 +1,19 @@
 package com.sheela.mobilestore.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sheela.mobilestore.OppoAddToCart;
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
 import com.sheela.mobilestore.model.Oppo;
@@ -42,7 +45,7 @@ public class OppoAdapter extends RecyclerView.Adapter<OppoAdapter.OppoViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OppoAdapter.OppoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final OppoAdapter.OppoViewHolder holder, int position) {
 
 
         final Oppo oppo= oppoList.get(position);
@@ -61,6 +64,19 @@ public class OppoAdapter extends RecyclerView.Adapter<OppoAdapter.OppoViewHolder
         {
             e.printStackTrace();
         }
+
+        holder.imgOpoo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, OppoAddToCart.class);
+                intent.putExtra("image",oppo.getImage());
+                intent.putExtra("name",oppo.getName());
+                intent.putExtra("location",oppo.getLocation());
+                intent.putExtra("cost",oppo.getCost());
+
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

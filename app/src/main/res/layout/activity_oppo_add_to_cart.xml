@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".OppoAddToCart">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mobile"
+        android:id="@+id/addoppo"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:hint="Name"
+        android:textSize="20sp"
+        android:id="@+id/nameoppoaddtocart"
+        android:layout_below="@+id/addoppo"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationoppoaddtocart"
+        android:hint="oppo"
+        android:textSize="20sp"
+        android:layout_below="@+id/nameoppoaddtocart"
+       android:gravity="center"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/costoppoaddtocart"
+        android:hint="20000"
+        android:textSize="20sp"
+        android:layout_below="@+id/locationoppoaddtocart"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnaddtocartoppo"
+        android:text="Add to Cart"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@id/costoppoaddtocart"
+        android:layout_marginTop="20dp"
+        />
+
+
+</RelativeLayout>

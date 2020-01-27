@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
 import com.sheela.mobilestore.api.UserAPI;
 import com.sheela.mobilestore.bll.LoginBLL;
+import com.sheela.mobilestore.model.User;
 import com.sheela.mobilestore.model.username;
 import com.sheela.mobilestore.serverresponse.SignUpResponse;
 import com.sheela.mobilestore.ui.home.HomeFragment;
@@ -29,6 +31,7 @@ public class Login extends AppCompatActivity {
     private EditText etUserName, etPassword;
     private Button btnLogin;
     private TextView txtRegister;
+    private User user;
 
 
     @Override
@@ -74,8 +77,10 @@ public class Login extends AppCompatActivity {
     //userlogin
 
     private void login() {
-        String username = etUserName.getText().toString();
+        final String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
+
+
 
         LoginBLL loginBLL = new LoginBLL();
         com.sheela.mobilestore.model.username Username = new username(username, password);
@@ -93,6 +98,15 @@ public class Login extends AppCompatActivity {
                 Url.token += response.body().getToken();
                 Intent intent = new Intent(Login.this, HomeActivity.class);
                 startActivity(intent);
+
+                SharedPreferences sharedPreferences=getSharedPreferences("User",MODE_PRIVATE);
+
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+
+                Toast.makeText(Login.this, user.getUsername() , Toast.LENGTH_SHORT).show();
+                editor.putString("username", user.getUsername());
+
+                editor.commit();
             }
 
             @Override
