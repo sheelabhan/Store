@@ -3,10 +3,13 @@ package com.sheela.mobilestore.ui.home;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,6 +46,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
+    private EditText et_search_samsung;
     List<Selling> sellingsList;
     SellingAdapter sellingAdapter;
     List<Samsung> samsungList;
@@ -62,13 +66,14 @@ public class HomeFragment extends Fragment {
     CarouselView carouselView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             final ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         carouselView = view.findViewById(R.id.caral);
         imgSamsung= view.findViewById(R.id.imgSamsung);
 
 
+        et_search_samsung=view.findViewById(R.id.et_search_samsung);
         recyclerview=view.findViewById(R.id.recyclerview);
         recyclerview1=view.findViewById(R.id.recyclerview1);
         recyclerview2=view.findViewById(R.id.recyclerview2);
@@ -90,6 +95,25 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), mImageTitle[position], Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        et_search_samsung.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                samsungAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         List<Contacts> contactsList = new ArrayList<>();
         contactsList.add(new Contacts("Cash On Delivery", "Free cash on Delivery Available", R.drawable.reone));
         contactsList.add(new Contacts("Best Price", "Best and Lowest price Guranteed", R.drawable.retwo));

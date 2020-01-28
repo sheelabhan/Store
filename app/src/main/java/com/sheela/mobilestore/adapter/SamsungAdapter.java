@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,16 +24,20 @@ import com.sheela.mobilestore.url.Url;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.List;
 
-public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungViewHolder>{
+public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungViewHolder> implements Filterable {
 
     Context mContext;
     List<Samsung> samsungList;
+    List<Samsung> samsungListFilter;
     public SamsungAdapter(Context mContext, List<Samsung> samsungList)
     {
         this.mContext=mContext;
         this.samsungList=samsungList;
+        this.samsungListFilter=samsungList;
     }
 
     @NonNull
@@ -45,13 +51,12 @@ public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungV
 
     @Override
     public void onBindViewHolder(@NonNull SamsungAdapter.SamsungViewHolder holder, int position) {
+        System.out.println(position+"");
 
-
-        final Samsung samsung = samsungList.get(position);
-        String imgPath = Url.imagePath + samsung.getImage();
-        holder.tvNaame.setText(samsung.getName());
-        holder.tvLoocation.setText(samsung.getLocation());
-        holder.tvCoost.setText(samsung.getCost());
+        String imgPath = Url.imagePath + samsungListFilter.get(position).getImage();
+        holder.tvNaame.setText(samsungListFilter.get(position).getName());
+        holder.tvLoocation.setText(samsungListFilter.get(position).getLocation());
+        holder.tvCoost.setText(samsungListFilter.get(position).getCost());
 
         StrictMode.StrictMode();
         try {
@@ -61,6 +66,7 @@ public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungV
             e.printStackTrace();
         }
 
+        final Samsung samsung = samsungListFilter.get(position);
         holder.imgSamsung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +83,41 @@ public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungV
 
     @Override
     public int getItemCount() {
-        return samsungList.size();
+        return samsungListFilter.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String Key = constraint.toString();
+                if(Key.isEmpty()){
+                    samsungListFilter= samsungList;
+                }else {
+                    List<Samsung> samsungArrayList= new ArrayList<>();
+                    for(Samsung row: samsungList){
+                        if(row.getName().toLowerCase().contains(Key.toLowerCase())){
+                            samsungArrayList.add(row);
+                        }
+
+                    }
+                    samsungListFilter=samsungArrayList;
+                }
+
+                FilterResults filterResults= new FilterResults();
+                filterResults.values= samsungListFilter;
+                return filterResults;
+
+
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+            samsungListFilter= (List<Samsung>) results.values;
+            notifyDataSetChanged();
+            }
+        };
     }
 
     public class SamsungViewHolder extends RecyclerView.ViewHolder{

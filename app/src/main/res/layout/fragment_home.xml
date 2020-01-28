@@ -20,10 +20,17 @@
             app:slideInterval="3000"
             app:strokeColor="#ede4ed"
             app:strokeWidth="1dp" />
-        <TextView
+
+        <EditText
+            android:id="@+id/et_search_samsung"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Samsung Phones"
             android:fontFamily="cursive"
             android:textSize="35sp"/>
