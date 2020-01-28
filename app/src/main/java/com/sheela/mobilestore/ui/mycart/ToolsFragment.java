@@ -68,7 +68,7 @@ public class ToolsFragment extends Fragment {
                 List<Cart> detailsList5 = response.body();
                 cartAdapter = new CartAdapter(getContext(), detailsList5);
                 recyclerViewone.setAdapter(cartAdapter);
-                recyclerViewone.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerViewone.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
             }
 
