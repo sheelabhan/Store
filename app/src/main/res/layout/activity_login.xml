@@ -15,14 +15,14 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:textSize="50sp"/>
+
     <ImageView
         android:id="@+id/imgUser"
-        android:layout_marginTop="30dp"
+        android:layout_width="742dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="256dp"
         android:layout_gravity="center"
-        android:src="@drawable/user"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:src="@drawable/user" />
 
     <EditText
         android:drawableLeft="@drawable/username"
@@ -64,6 +64,10 @@
         android:text=" If not register?? Register Here!"
         android:gravity="center"
         android:textSize="25sp" />
+    <TextView
+        android:id="@+id/displaylogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 
