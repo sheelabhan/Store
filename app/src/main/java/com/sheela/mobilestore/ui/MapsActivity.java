@@ -12,6 +12,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sheela.mobilestore.R;
+import com.sheela.mobilestore.model.LatitudeLongitude;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -40,13 +44,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        CameraUpdate zoom;
-        zoom=CameraUpdateFactory.zoomTo(16);
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(27.706841,85.330329 );
-        mMap.addMarker(new MarkerOptions().position(sydney).title("We are here"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        mMap.animateCamera(zoom);
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        List<LatitudeLongitude> longitudeList = new ArrayList<>();
+        longitudeList.add(new LatitudeLongitude(27.7052354, 85.3294158, "MobileStore,Dillibazar"));
+        longitudeList.add(new LatitudeLongitude(27.7064748, 85.3142013, "MobileStore,DurbarMarg"));
+        longitudeList.add(new LatitudeLongitude(27.7415528, 85.3346216, "MobileStore,Bansbari"));
+        longitudeList.add(new LatitudeLongitude(27.6856712, 85.299826, "MobileStore,sanepa"));
+
+        CameraUpdate center, zoom;
+        for (int i = 0; i < longitudeList.size(); i++) {
+            center = CameraUpdateFactory.newLatLng(new LatLng(longitudeList.get(i).getLat(),
+                    longitudeList.get(i).getLon()));
+            zoom = CameraUpdateFactory.zoomTo(13);
+
+            mMap.addMarker(new MarkerOptions().position(new LatLng(longitudeList.get(i).getLat(),
+                    longitudeList.get(i).getLon())).title(longitudeList.get(i).getMarker()));
+
+            mMap.moveCamera(center);
+
+            mMap.animateCamera(zoom);
+
+            mMap.setMapType(mMap.MAP_TYPE_HYBRID);
+
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+//        CameraUpdate zoom;
+//        zoom=CameraUpdateFactory.zoomTo(16);
+//        // Add a marker in Sydney and move the camera
+//        LatLng sydney = new LatLng(27.706841,85.330329 );
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("We are here"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//        mMap.animateCamera(zoom);
+//        mMap.getUiSettings().setZoomControlsEnabled(true);
+        }
     }
 }

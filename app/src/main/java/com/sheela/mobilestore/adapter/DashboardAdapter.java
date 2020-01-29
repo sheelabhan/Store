@@ -85,8 +85,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
            lastname=itemView.findViewById(R.id.lastname);
            phoneno=itemView.findViewById(R.id.phoneno);
           username=itemView.findViewById(R.id.username);
-          password=itemView.findViewById(R.id.password);
-          confirmp=itemView.findViewById(R.id.confirmp);
+
           btnupdate=itemView.findViewById(R.id.btnupdate);
 
         }
