@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,12 +43,14 @@ public class ToolsFragment extends Fragment {
    RecyclerView recyclerViewone;
     List<Cart> cartList;
   CartAdapter cartAdapter;
+  CircleImageView imgview;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_tools, container, false);
         recyclerViewone=root.findViewById(R.id.recyclerviewone);
+        imgview=root.findViewById(R.id.imgview);
         cart();
         return root;
 

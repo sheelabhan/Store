@@ -20,7 +20,7 @@ public interface MyCartApi {
     Call<List<Cart>>getCart();
 
     @GET("mycart")
-    Call<Cart> getImage(@Header("Authorization") String id);
+    Call<Cart> getImage(@Header("Authorization") String token);
 
     @POST("mycart")
     Call<Void> addtoitem(@Body Cart cart);

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
 import com.sheela.mobilestore.cart.OppoAddToCart;
+import com.sheela.mobilestore.cart.SamsungAddToCart;
 import com.sheela.mobilestore.model.Samsung;
 import com.sheela.mobilestore.model.Selling;
 import com.sheela.mobilestore.url.Url;
@@ -52,17 +53,18 @@ public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungV
     @Override
     public void onBindViewHolder(@NonNull SamsungAdapter.SamsungViewHolder holder, int position) {
         System.out.println(position+"");
-
         String imgPath = Url.imagePath + samsungListFilter.get(position).getImage();
         holder.tvNaame.setText(samsungListFilter.get(position).getName());
         holder.tvLoocation.setText(samsungListFilter.get(position).getLocation());
         holder.tvCoost.setText(samsungListFilter.get(position).getCost());
-
         StrictMode.StrictMode();
-        try {
-            URL url = new URL(imgPath);
-            holder.imgSamsung.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
-        } catch (IOException e) {
+        try{
+            URL url=new URL(imgPath);
+            holder.imgSamsung.setImageBitmap(BitmapFactory.decodeStream((InputStream)url.getContent()));
+        }
+
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
 
@@ -70,7 +72,7 @@ public class SamsungAdapter extends RecyclerView.Adapter<SamsungAdapter.SamsungV
         holder.imgSamsung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext, OppoAddToCart.class);
+                Intent intent=new Intent(mContext, SamsungAddToCart.class);
                 intent.putExtra("image",samsung.getImage());
                 intent.putExtra("name",samsung.getName());
                 intent.putExtra("location",samsung.getLocation());

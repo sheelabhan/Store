@@ -28,6 +28,7 @@ public class LaunchedAddToCart extends AppCompatActivity {
     private TextView namee,loocationn,cosst;
     private ImageView imggg;
     private Button btnaddtocartlaunched;
+    Cart cart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +39,14 @@ public class LaunchedAddToCart extends AppCompatActivity {
         imggg=findViewById(R.id.addlaunched);
         btnaddtocartlaunched=findViewById(R.id.btnaddtocartsamsung);
 
+
         Bundle bundle=getIntent().getExtras();
 
         if (bundle != null) {
 
             String imagename = bundle.getString("image");
 
-            final String imgPath ="http://10.0.2.2:3000/uploads/" + imagename;
+            final String imgPath ="http://10.0.2.2:3001/uploads/" + imagename;
 
             try {
                 URL url=new URL(imgPath);
@@ -80,11 +82,13 @@ public class LaunchedAddToCart extends AppCompatActivity {
     private void oppoAddtoCart() {
 
         MyCartApi myCartApi= Url.getInstance().create(MyCartApi.class);
-        String user_name = "sheela";
-        String product_name = namee.getText().toString();
-        String prduct_cost=cosst.getText().toString();
+        Call<Cart> cartCall = myCartApi.getImage(Url.token);
+//        String user_name = "sheela";
+//        String product_name = namee.getText().toString();
+//        String prduct_cost=cosst.getText().toString();
 
-        Cart cart=new Cart(user_name,product_name,prduct_cost);
+
+//        Cart cart=new Cart(user_name,product_name,prduct_cost);
 
         Call<Void> voidCall=myCartApi.addtoitem(cart);
 
@@ -92,7 +96,10 @@ public class LaunchedAddToCart extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(LaunchedAddToCart.this, "Item added to cart successfully", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {

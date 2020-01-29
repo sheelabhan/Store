@@ -1,6 +1,7 @@
 package com.sheela.mobilestore.model;
 
 public class Cart {
+
     private String username;
     private String product_name;
     private String cost;

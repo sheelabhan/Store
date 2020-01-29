@@ -35,28 +35,27 @@ public class Login extends AppCompatActivity {
     private EditText etUserName, etPassword;
     private Button btnLogin;
     private TextView txtRegister;
-    public NotificationManagerCompat notificationManagerCompat;
-    public SensorManager sensorManager;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        notificationManagerCompat = NotificationManagerCompat.from(this);
-        CreateChannel channel = new CreateChannel(this);
-        channel.createChannel();
 
         etUserName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
         txtRegister = findViewById(R.id.txtRegister);
         btnLogin = findViewById(R.id.btnLogin);
+
+
+        //u
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 login();
-                sensorGyro();
+
 
                 if (TextUtils.isEmpty(etUserName.getText())) {
                     etUserName.setError("Please enter User Name");
@@ -85,44 +84,11 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-    private void sensorGyro() {
 
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-
-        SensorEventListener sensorEventListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent event) {
-
-                if (event.values[1] < 0) {
-                    login();
-                    finish();
-
-                } else if (event.values[1] > 0) {
-
-                }
-            }
-
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-            }
-        };
-
-        if (sensor != null) {
-            sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-
-        } else {
-            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
-        }
-    }
-    //userlogin
 
     private void login() {
         final String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
-
-
 
 
         LoginBLL loginBLL = new LoginBLL();
@@ -153,7 +119,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
-    
+
 }
 
 

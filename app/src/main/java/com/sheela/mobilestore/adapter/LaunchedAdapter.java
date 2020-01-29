@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
+import com.sheela.mobilestore.cart.LaunchedAddToCart;
 import com.sheela.mobilestore.cart.OppoAddToCart;
 import com.sheela.mobilestore.model.Contacts;
 import com.sheela.mobilestore.model.Launched;
@@ -67,7 +68,7 @@ public class LaunchedAdapter  extends RecyclerView.Adapter<LaunchedAdapter.Launc
         holder.imgsheela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext, OppoAddToCart.class);
+                Intent intent=new Intent(mContext, LaunchedAddToCart.class);
                 intent.putExtra("image",launched.getImage());
                 intent.putExtra("name",launched.getName());
                 intent.putExtra("location",launched.getLocation());

@@ -44,7 +44,7 @@ public class SamsungAddToCart extends AppCompatActivity {
 
             String imagename = bundle.getString("image");
 
-            final String imgPath ="http://10.0.2.2:3000/uploads/" + imagename;
+            final String imgPath ="http://10.0.2.2:3001/uploads/" + imagename;
 
             try {
                 URL url=new URL(imgPath);

@@ -29,6 +29,7 @@ public class OppoAddToCart extends AppCompatActivity {
 
     private TextView name,location,cost;
     private ImageView img;
+    private String imageName="";
     private Button btnaddtocartoppo;
 
     @Override
@@ -48,7 +49,7 @@ public class OppoAddToCart extends AppCompatActivity {
 
             String imagename = bundle.getString("image");
 
-            final String imgPath ="http://10.0.2.2:3000/uploads/" + imagename;
+            final String imgPath ="http://10.0.2.2:3001/uploads/" + imagename;
 
             try {
                 URL url=new URL(imgPath);
