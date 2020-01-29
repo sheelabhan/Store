@@ -29,7 +29,7 @@ public class SendFragment extends Fragment {
        btnProfile.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent= new Intent(getContext(), DashboardActivity.class);
+               Intent intent= new Intent(getContext(), ProfileFragment.class);
                startActivity(intent);
            }
        });
