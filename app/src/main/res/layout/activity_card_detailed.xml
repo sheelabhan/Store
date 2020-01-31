@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:layout_marginTop="15dp"
     android:layout_marginLeft="10dp"
+    android:background="@color/colorPrimary"
     android:layout_marginRight="10dp"
     tools:context=".activity.CardDetailedActivity">
     <de.hdodenhof.circleimageview.CircleImageView
