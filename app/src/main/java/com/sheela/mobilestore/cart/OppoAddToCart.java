@@ -85,11 +85,12 @@ public class OppoAddToCart extends AppCompatActivity {
     private void oppoAddtoCart() {
 
         MyCartApi myCartApi= Url.getInstance().create(MyCartApi.class);
+
         String user_name = "sheela";
         String product_name = name.getText().toString();
         String prduct_cost=cost.getText().toString();
 
-        Cart cart=new Cart(user_name,product_name,prduct_cost);
+        Cart cart=new Cart(user_name,product_name,prduct_cost,imageName);
 
         Call<Void> voidCall=myCartApi.addtoitem(cart);
 

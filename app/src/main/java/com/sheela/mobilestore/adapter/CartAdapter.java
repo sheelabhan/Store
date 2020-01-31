@@ -53,6 +53,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         cartViewHolder.product.setText(cart.getProduct_name());
         cartViewHolder.cost1.setText(cart.getCost());
         StrictMode.StrictMode();
+        String imgPath = Url.imagePath + cart.getImage();
+
+        try {
+            URL url = new URL(imgPath);
+            cartViewHolder.imgview.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

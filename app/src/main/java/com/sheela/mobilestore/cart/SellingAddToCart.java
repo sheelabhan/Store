@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class SellingAddToCart extends AppCompatActivity {
     private TextView nama,loc,cos;
     private ImageView image;
+    private String imageName="";
     private Button btnaddtocartselling;
 
     @Override
@@ -85,7 +86,7 @@ public class SellingAddToCart extends AppCompatActivity {
         String product_name = nama.getText().toString();
         String prduct_cost=cos.getText().toString();
 
-        Cart cart=new Cart(user_name,product_name,prduct_cost);
+        Cart cart=new Cart(user_name,product_name,prduct_cost,imageName);
 
         Call<Void> voidCall=myCartApi.addtoitem(cart);
 

@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class SamsungAddToCart extends AppCompatActivity {
     private TextView naame,loocation,coost;
     private ImageView immg;
+    private String imageName="";
     private Button btnaddtocartsamsung;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +85,7 @@ public class SamsungAddToCart extends AppCompatActivity {
         String product_name = naame.getText().toString();
         String prduct_cost=coost.getText().toString();
 
-        Cart cart=new Cart(user_name,product_name,prduct_cost);
+        Cart cart=new Cart(user_name,product_name,prduct_cost,imageName);
 
         Call<Void> voidCall=myCartApi.addtoitem(cart);
 
