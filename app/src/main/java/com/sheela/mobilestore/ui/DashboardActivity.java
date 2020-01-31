@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sheela.mobilestore.R;
+import com.sheela.mobilestore.activity.SignUp;
 import com.sheela.mobilestore.adapter.CartAdapter;
 import com.sheela.mobilestore.adapter.DashboardAdapter;
 import com.sheela.mobilestore.api.CartApi;
@@ -48,6 +51,7 @@ public class DashboardActivity extends AppCompatActivity {
         user = new User();
 
         loaduser();
+
     }
 
     private void loaduser() {

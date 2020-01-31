@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:hint="Name"
+
         android:textSize="20sp"
         android:id="@+id/nameoppoaddtocart"
         android:layout_below="@+id/addoppo"
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/locationoppoaddtocart"
         android:hint="oppo"
+        android:fontFamily="sans-serif-black"
         android:textSize="20sp"
         android:layout_below="@+id/nameoppoaddtocart"
        android:gravity="center"
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/costoppoaddtocart"
         android:hint="20000"
+        android:fontFamily="sans-serif-black"
         android:textSize="20sp"
         android:layout_below="@+id/locationoppoaddtocart"
         android:gravity="center"
