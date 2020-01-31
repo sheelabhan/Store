@@ -71,7 +71,7 @@ public class DashboardActivity extends AppCompatActivity {
                 }
 
                 firstname.setText(response.body().getFirstName());
-               lastname.setText(response.body().getLastName());
+                lastname.setText(response.body().getLastName());
                 phoneno.setText(response.body().getPhone());
                 username.setText(response.body().getUsername());
 
