@@ -5,47 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    tools:context=".cart.LaunchedAddToCart">
-    <ImageView
+    tools:context=".activity.UpdateActivity">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="50dp"
+        android:id="@+id/imguser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/mobile"
-        android:id="@+id/addlaunched"
-        />
+        android:src="@drawable/user" />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:hint="Name"
+        android:hint="Firstname"
         android:textSize="20sp"
-        android:id="@+id/namelaunchedaddtocart"
-        android:layout_below="@+id/addlaunched"
+        android:id="@+id/firstname"
+        android:layout_below="@+id/imguser"
         android:gravity="center"
         android:layout_marginTop="30dp"
         />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/locationlaunchedaddtocart"
-        android:hint="oppo"
-        android:fontFamily="sans-serif-black"
+        android:id="@+id/lastname"
+        android:hint="Lastname"
         android:textSize="20sp"
-        android:layout_below="@+id/namelaunchedaddtocart"
+        android:layout_below="@+id/firstname"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/phoneno"
+        android:hint="Phone no"
+        android:textSize="20sp"
+        android:layout_below="@+id/lastname"
         android:gravity="center"
         android:layout_marginTop="10dp"
         />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/costlaunchedaddtocart"
-        android:hint="20000"
-        android:fontFamily="sans-serif-black"
+        android:id="@+id/username"
+        android:hint="Username"
         android:textSize="20sp"
-        android:layout_below="@+id/locationlaunchedaddtocart"
+        android:layout_below="@+id/phoneno"
         android:gravity="center"
         android:layout_marginTop="10dp"
         />
@@ -55,13 +61,12 @@
 
         android:background="@drawable/button"
         android:layout_height="wrap_content"
-        android:id="@+id/btnaddtocartlaunched"
-        android:text="Add to Cart"
+        android:id="@+id/btnupdate"
+        android:text="Update"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_below="@id/costlaunchedaddtocart"
+        android:layout_below="@id/username"
         android:layout_marginTop="20dp"
         />
-
 
 </RelativeLayout>

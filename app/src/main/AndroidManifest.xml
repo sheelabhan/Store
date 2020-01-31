@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.CardDetailedActivity"></activity>
+        <activity android:name=".activity.UpdateActivity"></activity>
+        <activity android:name=".activity.CardDetailedActivity" />
         <activity android:name=".cart.SellingAddToCart" />
         <activity android:name=".cart.LaunchedAddToCart" />
         <activity android:name=".cart.SamsungAddToCart" />

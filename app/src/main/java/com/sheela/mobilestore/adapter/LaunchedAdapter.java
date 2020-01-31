@@ -68,7 +68,7 @@ public class LaunchedAdapter  extends RecyclerView.Adapter<LaunchedAdapter.Launc
         holder.imgsheela.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext, LaunchedAddToCart.class);
+                Intent intent=new Intent(mContext, OppoAddToCart.class);
                 intent.putExtra("image",launched.getImage());
                 intent.putExtra("name",launched.getName());
                 intent.putExtra("location",launched.getLocation());

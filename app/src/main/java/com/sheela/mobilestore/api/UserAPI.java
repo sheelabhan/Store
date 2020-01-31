@@ -1,6 +1,7 @@
 package com.sheela.mobilestore.api;
 
 import com.sheela.mobilestore.model.User;
+import com.sheela.mobilestore.model.Usercrud;
 import com.sheela.mobilestore.model.username;
 import com.sheela.mobilestore.serverresponse.ImageResponse;
 import com.sheela.mobilestore.serverresponse.SignUpResponse;
@@ -13,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 
 public interface UserAPI {
@@ -29,4 +31,7 @@ public interface UserAPI {
 
     @GET("user/me")
     Call<User> getUserDetails(@Header("Authorization") String token);
+
+    @PUT("user/me")
+    Call<Usercrud> getupdate(@Header("Authorization") String token, @Body Usercrud usercrud);
 }

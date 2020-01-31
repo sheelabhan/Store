@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.activity.SignUp;
+import com.sheela.mobilestore.activity.UpdateActivity;
 import com.sheela.mobilestore.adapter.CartAdapter;
 import com.sheela.mobilestore.adapter.DashboardAdapter;
 import com.sheela.mobilestore.api.CartApi;
@@ -35,7 +37,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private ImageView imguser;
     private TextView firstname, lastname, phoneno, username;
-    Button btnupdate;
+    Button btnEdit;
     User user;
 
     @Override
@@ -47,8 +49,17 @@ public class DashboardActivity extends AppCompatActivity {
         lastname = findViewById(R.id.lastname);
         phoneno = findViewById(R.id.phoneno);
         username = findViewById(R.id.username);
-        btnupdate = findViewById(R.id.btnupdate);
+        btnEdit = findViewById(R.id.btnEdit);
         user = new User();
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(DashboardActivity.this, UpdateActivity.class);
+                intent.putExtra("User",user);
+                startActivity(intent);
+            }
+        });
+
 
         loaduser();
 

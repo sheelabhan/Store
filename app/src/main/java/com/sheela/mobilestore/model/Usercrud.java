@@ -1,29 +1,24 @@
 package com.sheela.mobilestore.model;
 
-
 import java.io.Serializable;
 
-public class User implements Serializable {
-
+public class Usercrud implements Serializable {
     private String firstName;
     private String lastName;
-//    private String email;
+    //    private String email;
     private String username;
     private String phone;
-    private String password;
     private String image;
 
-    public User(String firstName, String lastName, String username, String phone, String password, String image) {
-
+    public Usercrud(String firstName, String lastName, String username, String phone, String image) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.phone = phone;
-        this.password = password;
         this.image = image;
     }
 
-    public User() {
+    public Usercrud() {
     }
 
     public String getFirstName() {
@@ -58,14 +53,6 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getImage() {
         return image;
     }
@@ -74,3 +61,4 @@ public class User implements Serializable {
         this.image = image;
     }
 }
+
