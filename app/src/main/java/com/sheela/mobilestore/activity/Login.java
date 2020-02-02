@@ -1,8 +1,10 @@
 package com.sheela.mobilestore.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
 import android.content.Intent;
 
 import android.hardware.Sensor;
@@ -35,13 +37,16 @@ public class Login extends AppCompatActivity {
     private EditText etUserName, etPassword;
     private Button btnLogin;
     private TextView txtRegister;
+    private NotificationManagerCompat notificationManagerCompat;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+       notificationManagerCompat= NotificationManagerCompat.from(this);
+       CreateChannel channel= new CreateChannel(this);
+       channel.createChannel();
         etUserName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
         txtRegister = findViewById(R.id.txtRegister);
@@ -87,6 +92,10 @@ public class Login extends AppCompatActivity {
 
 
     private void login() {
+        notificationManagerCompat= NotificationManagerCompat.from(this);
+        CreateChannel channel= new CreateChannel(this);
+        channel.createChannel();
+
         final String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
 
@@ -103,6 +112,13 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Code", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Notification notification= new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
+                       setSmallIcon(R.drawable.ic_audiotrack_black_24dp)
+                        .setContentTitle("Login")
+                        .setContentText("You are login successfully!!")
+                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                        .build();
+                notificationManagerCompat.notify(1, notification);
                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 Url.token += response.body().getToken();
                 Intent intent = new Intent(Login.this, HomeActivity.class);
