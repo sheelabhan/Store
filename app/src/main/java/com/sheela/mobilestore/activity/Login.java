@@ -38,23 +38,22 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     private TextView txtRegister;
     private NotificationManagerCompat notificationManagerCompat;
+    private SensorManager sensorManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-       notificationManagerCompat= NotificationManagerCompat.from(this);
-       CreateChannel channel= new CreateChannel(this);
-       channel.createChannel();
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
         etUserName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
         txtRegister = findViewById(R.id.txtRegister);
         btnLogin = findViewById(R.id.btnLogin);
 
-
-        //u
-
+        sensorGyro();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,8 +92,8 @@ public class Login extends AppCompatActivity {
 
 
     private void login() {
-        notificationManagerCompat= NotificationManagerCompat.from(this);
-        CreateChannel channel= new CreateChannel(this);
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
         channel.createChannel();
 
         final String username = etUserName.getText().toString();
@@ -113,8 +112,8 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Code", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Notification notification= new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
-                       setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                Notification notification = new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
+                        setSmallIcon(R.drawable.ic_notifications_black_24dp)
                         .setContentTitle("Login")
                         .setContentText("You are login successfully!!")
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
@@ -135,6 +134,38 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void sensorGyro() {
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        SensorEventListener sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+
+                if (event.values[1] < 0) {
+                    login();
+                    finish();
+
+                } else if (event.values[1] > 0) {
+                    startActivity(new Intent(Login.this,SignUp.class));
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+
+        if (sensor != null) {
+            sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        } else {
+            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

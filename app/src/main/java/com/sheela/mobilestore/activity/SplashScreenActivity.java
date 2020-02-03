@@ -13,7 +13,7 @@ import com.sheela.mobilestore.ProgressBarAnimation;
 import com.sheela.mobilestore.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    ImageView imgLogo;
+
     ProgressBar progressBar;
 
     @Override

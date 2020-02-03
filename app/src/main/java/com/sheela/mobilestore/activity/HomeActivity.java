@@ -1,6 +1,11 @@
 package com.sheela.mobilestore.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,10 +30,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView imageView_logout;
-
+    private SensorManager sensorManager;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -47,15 +53,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        imageView_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Url.token ="";
-                Intent intent= new Intent(HomeActivity.this, Login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        proximity();
+        logout();
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -84,5 +84,40 @@ public class HomeActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    private void proximity() {
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        Sensor sensor=sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        SensorEventListener sensorEventListener=new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+                if (event.values[0] <= 4) {
+                    Toast.makeText(HomeActivity.this, "object is near", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(HomeActivity.this, "object is far", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+//        sensorManager.registerListener()
+    }
+
+    private void logout(){
+
+        imageView_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Url.token ="";
+                Intent intent= new Intent(HomeActivity.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
 }
