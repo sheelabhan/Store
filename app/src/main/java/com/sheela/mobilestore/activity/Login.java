@@ -72,6 +72,7 @@ public class Login extends AppCompatActivity {
                     etPassword.requestFocus();
                     return;
 
+
                 }
 
             }
@@ -113,7 +114,7 @@ public class Login extends AppCompatActivity {
                     return;
                 }
                 Notification notification= new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
-                       setSmallIcon(R.drawable.ic_audiotrack_black_24dp)
+                       setSmallIcon(R.drawable.ic_notifications_black_24dp)
                         .setContentTitle("Login")
                         .setContentText("You are login successfully!!")
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
