@@ -3,6 +3,7 @@ package com.sheela.mobilestore.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.StrictModeClass.StrictMode;
+import com.sheela.mobilestore.activity.HomeActivity;
 import com.sheela.mobilestore.api.CartApi;
 import com.sheela.mobilestore.model.Cart;
+import com.sheela.mobilestore.model.Cartcrud;
 import com.sheela.mobilestore.model.Oppo;
+import com.sheela.mobilestore.ui.mycart.ToolsFragment;
 import com.sheela.mobilestore.url.Url;
 
 import java.io.IOException;
@@ -35,11 +39,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     Context mContext;
 
-    List<Cart> cartList;
+    List<Cartcrud> cartList;
 
     CartAdapter a = this;
 
-    public CartAdapter(Context mContext, List<Cart> cartList) {
+    public CartAdapter(Context mContext, List<Cartcrud> cartList) {
         this.mContext = mContext;
         this.cartList = cartList;
     }
@@ -56,11 +60,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     @Override
     public void onBindViewHolder(@NonNull final CartViewHolder cartViewHolder, int i) {
 
-        final Cart cart = cartList.get(i);
+        final Cartcrud cart = cartList.get(i);
 
         cartViewHolder.name1.setText(cart.getUsername());
         cartViewHolder.product.setText(cart.getProduct_name());
         cartViewHolder.cost1.setText(cart.getCost());
+
+        cartViewHolder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(mContext, HomeActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
         StrictMode.StrictMode();
         String imgPath = Url.imagePath + cart.getImage();
 
@@ -74,24 +86,25 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         cartViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setMessage("Are you sure?")
                         .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 CartApi api = Url.getInstance().create(CartApi.class);
-                                Call<Void> voidCall = api.deleteItems(cartViewHolder.name1.getText().toString());
+                                Call<Cartcrud> voidCall = api.deleteItems(Url.token,cart.get_id());
 
-                                voidCall.enqueue(new Callback<Void>() {
+                                voidCall.enqueue(new Callback<Cartcrud>() {
                                     @Override
-                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                    public void onResponse(Call<Cartcrud> call, Response<Cartcrud> response) {
                                         Toast.makeText(mContext, "Items procced to delievery", Toast.LENGTH_SHORT).show();
                                         cartList.remove(cart);
                                         a.notifyDataSetChanged();
                                     }
 
                                     @Override
-                                    public void onFailure(Call<Void> call, Throwable t) {
+                                    public void onFailure(Call<Cartcrud> call, Throwable t) {
                                         Toast.makeText(mContext, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -105,6 +118,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
             }
         });
+
     }
 
     @Override

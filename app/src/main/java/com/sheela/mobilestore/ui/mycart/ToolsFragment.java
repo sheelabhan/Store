@@ -24,6 +24,7 @@ import com.sheela.mobilestore.api.CartApi;
 import com.sheela.mobilestore.api.MyCartApi;
 import com.sheela.mobilestore.api.SamsungApi;
 import com.sheela.mobilestore.model.Cart;
+import com.sheela.mobilestore.model.Cartcrud;
 import com.sheela.mobilestore.model.Launched;
 import com.sheela.mobilestore.model.Oppo;
 import com.sheela.mobilestore.model.Samsung;
@@ -41,7 +42,7 @@ import retrofit2.Response;
 
 public class ToolsFragment extends Fragment {
    RecyclerView recyclerViewone;
-    List<Cart> cartList;
+    List<Cartcrud> cartList;
   CartAdapter cartAdapter;
   CircleImageView imgview;
 
@@ -60,15 +61,15 @@ public class ToolsFragment extends Fragment {
        cartList = new ArrayList<>();
       CartApi cartApi = Url.getInstance().create(CartApi.class);
 //
-        Call<List<Cart>> ListCall5 = cartApi.getcart();
-        ListCall5.enqueue(new Callback<List<Cart>>() {
+        Call<List<Cartcrud>> ListCall5 = cartApi.getcart();
+        ListCall5.enqueue(new Callback<List<Cartcrud>>() {
             @Override
-            public void onResponse(Call<List<Cart>> call, Response<List<Cart>> response) {
+            public void onResponse(Call<List<Cartcrud>> call, Response<List<Cartcrud>> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(getContext(), "Error" + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                List<Cart> detailsList5 = response.body();
+                List<Cartcrud> detailsList5 = response.body();
                 cartAdapter = new CartAdapter(getContext(), detailsList5);
                 recyclerViewone.setAdapter(cartAdapter);
                 recyclerViewone.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -76,7 +77,7 @@ public class ToolsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Cart>> call, Throwable t) {
+            public void onFailure(Call<List<Cartcrud>> call, Throwable t) {
                 Log.d("Error Message", "Error " + t.getLocalizedMessage());
                 Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
             }

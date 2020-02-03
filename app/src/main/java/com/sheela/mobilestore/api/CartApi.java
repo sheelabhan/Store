@@ -1,6 +1,7 @@
 package com.sheela.mobilestore.api;
 
 import com.sheela.mobilestore.model.Cart;
+import com.sheela.mobilestore.model.Cartcrud;
 import com.sheela.mobilestore.model.Selling;
 
 import java.util.List;
@@ -17,13 +18,13 @@ import retrofit2.http.Path;
 
 public interface CartApi {
     @GET("mycart")
-    Call<List<Cart>> getcart();
+    Call<List<Cartcrud>> getcart();
     @Multipart
     @POST("upload")
-    Call<Cart> uploadImage(@Part MultipartBody.Part img);
+    Call<Cartcrud> uploadImage(@Part MultipartBody.Part img);
     @GET("mycart")
-    Call<Cart> getImage(@Header("Authorization") String id);
+    Call<Cartcrud> getImage(@Header("Authorization") String token);
 
-    @DELETE("deletcart")
-    Call<Void> deleteItems(@Path("name") String name);
+    @DELETE("mycart")
+    Call<Cartcrud> deleteItems(@Header("Authorization") String token, @Path("id") String id);
 }
