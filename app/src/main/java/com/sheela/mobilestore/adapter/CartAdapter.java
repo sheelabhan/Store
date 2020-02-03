@@ -68,21 +68,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         try {
             URL url = new URL(imgPath);
             cartViewHolder.imgview.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         cartViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setMessage("Are you sure?")
                         .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                CartApi api= Url.getInstance().create(CartApi.class);
-                                Call<Void> voidCall=api.deleteItems(cartViewHolder.name1.getText().toString());
+                                CartApi api = Url.getInstance().create(CartApi.class);
+                                Call<Void> voidCall = api.deleteItems(cartViewHolder.name1.getText().toString());
 
                                 voidCall.enqueue(new Callback<Void>() {
                                     @Override
@@ -94,16 +92,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                                     @Override
                                     public void onFailure(Call<Void> call, Throwable t) {
-                                        Toast.makeText(mContext, "Error"+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(mContext, "Error" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
                         })
-                        .setNegativeButton("cancel",null);
+                        .setNegativeButton("cancel", null);
 
-                AlertDialog alertDialog=builder.create();
+                AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-
 
 
             }
@@ -117,18 +114,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
 
-      CircleImageView imgview;
+        CircleImageView imgview;
         TextView name1, product, cost1;
         Button button;
+
         public CartViewHolder(@NonNull View cartView) {
             super(cartView);
 
-          imgview=cartView.findViewById(R.id.imgview);
+            imgview = cartView.findViewById(R.id.imgview);
             name1 = cartView.findViewById(R.id.name1);
             product = cartView.findViewById(R.id.product);
             cost1 = cartView.findViewById(R.id.cost1);
-            button=cartView.findViewById(R.id.btnprocced);
-
+            button = cartView.findViewById(R.id.btnprocced);
 
 
         }
