@@ -10,11 +10,11 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/fav"
+            android:icon="@drawable/ic_add_location_black_24dp"
             android:title="@string/title_contact" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/basket"
+            android:icon="@drawable/ic_reorder_black_24dp"
             android:title="@string/title_about" />
         <item
             android:id="@+id/nav_tools"
@@ -28,7 +28,7 @@
 <!--            android:title="@string/title_notifications" />-->
         <item
             android:id="@+id/nav_send"
-            android:icon="@drawable/more"
+            android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/title_more" />
 
 

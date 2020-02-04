@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
     List<Oppo> oppoList;
   OppoAdapter oppoAdapter;
     RecyclerView  recyclerview,recyclerview1, recyclerview2,recyclerview3,recyclerview4;
-    ImageView imgProfile,imgSamsung,imgsheela,imgOppo,insta,facebook;
+    ImageView imgProfile,imgSamsung,imgsheela,imgOppo,insta,facebook,google;
     private int[] mImages = new int[]{
             R.drawable.slider2, R.drawable.slider3, R.drawable.slider1
     };
@@ -80,6 +80,7 @@ public class HomeFragment extends Fragment {
         recyclerview3=view.findViewById(R.id.recyclerview3);
         recyclerview4=view.findViewById(R.id.recyclerview4);
         facebook=view.findViewById(R.id.facebook);
+        google=view.findViewById(R.id.google);
         insta=view.findViewById(R.id.insta);
         imgsheela=view.findViewById(R.id.imgsheela);
         imgProfile = view.findViewById(R.id.imgProfile);
@@ -143,6 +144,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Uri uri= Uri.parse("https://www.insta.com");
+                Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
+       google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri= Uri.parse("https://www.google.com");
                 Intent intent= new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(intent);
             }

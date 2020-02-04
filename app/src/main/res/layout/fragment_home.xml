@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <LinearLayout
@@ -57,10 +58,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="cursive"
             android:gravity="center"
             android:text="Just Launched Phones"
-            android:textSize="20sp" />
+            android:textSize="35sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview3"
@@ -81,16 +82,17 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="cursive"
             android:gravity="center"
             android:text="Best Selling"
-            android:textSize="20sp" />
+            android:textSize="35sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview1"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_marginTop="1dp"
+
             android:orientation="horizontal"
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false" />
@@ -130,7 +132,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
 
 
@@ -177,6 +178,14 @@
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:src="@drawable/insta" />
+            <ImageView
+                android:id="@+id/google"
+                android:layout_width="54dp"
+                android:layout_height="82dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:layout_marginLeft="5sp"
+                android:src="@drawable/google" />
         </LinearLayout>
 
 

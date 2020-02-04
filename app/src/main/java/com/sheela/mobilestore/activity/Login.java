@@ -5,6 +5,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 
 import android.hardware.Sensor;
@@ -12,6 +13,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -68,6 +70,11 @@ public class Login extends AppCompatActivity {
 
                 } else if (TextUtils.isEmpty(etPassword.getText())) {
                     etPassword.setError("Please enter Password");
+                    // Get instance of Vibrator from current Context
+                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+// Vibrate for 400 milliseconds
+                    vibrator.vibrate(400);
                     etPassword.requestFocus();
                     return;
 
