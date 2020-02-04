@@ -152,11 +152,7 @@
                 android:scrollbars="horizontal"
                 app:fastScrollEnabled="false" />
         </LinearLayout>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/mobiletwo" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
