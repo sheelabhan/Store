@@ -69,7 +69,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         cartViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(mContext, HomeActivity.class);
+                Intent intent = new Intent(mContext, HomeActivity.class);
                 mContext.startActivity(intent);
             }
         });
@@ -93,7 +93,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 CartApi api = Url.getInstance().create(CartApi.class);
-                                Call<Cartcrud> voidCall = api.deleteItems(Url.token,cart.get_id());
+                                String aa = cart.get_id();
+                                Call<Cartcrud> voidCall = api.deleteItems(Url.token, cart.get_id());
 
                                 voidCall.enqueue(new Callback<Cartcrud>() {
                                     @Override

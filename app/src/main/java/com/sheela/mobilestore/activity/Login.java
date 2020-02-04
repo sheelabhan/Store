@@ -12,12 +12,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,7 @@ public class Login extends AppCompatActivity {
     private EditText etUserName, etPassword;
     private Button btnLogin;
     private TextView txtRegister;
+    private ImageView insta,facebook;
     private NotificationManagerCompat notificationManagerCompat;
     private SensorManager sensorManager;
 
@@ -54,6 +57,9 @@ public class Login extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         txtRegister = findViewById(R.id.txtRegister);
         btnLogin = findViewById(R.id.btnLogin);
+        facebook=findViewById(R.id.facebook);
+
+        insta=findViewById(R.id.insta);
 
         sensorGyro();
 
@@ -95,6 +101,22 @@ public class Login extends AppCompatActivity {
 
             }
         });
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri= Uri.parse("https://www.facebook.com");
+                Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
+        insta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri= Uri.parse("https://www.insta.com");
+                Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -122,11 +144,10 @@ public class Login extends AppCompatActivity {
                 Notification notification = new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
                         setSmallIcon(R.drawable.ic_notifications_black_24dp)
                         .setContentTitle("Login")
-                        .setContentText(username +"You are login successfully!!")
+                        .setContentText(username + " You are login successfully!!")
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                         .build();
                 notificationManagerCompat.notify(1, notification);
-                Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 Url.token += response.body().getToken();
                 Intent intent = new Intent(Login.this, HomeActivity.class);
                 startActivity(intent);

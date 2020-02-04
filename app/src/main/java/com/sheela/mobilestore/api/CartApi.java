@@ -9,6 +9,7 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
@@ -26,5 +27,6 @@ public interface CartApi {
     Call<Cartcrud> getImage(@Header("Authorization") String token);
 
     @DELETE("mycart")
-    Call<Cartcrud> deleteItems(@Header("Authorization") String token, @Path("id") String id);
+    Call<Cartcrud> deleteItems(@Header("Authorization") String token, @Path("_id") String _id);
+
 }
