@@ -1,7 +1,10 @@
 package com.sheela.mobilestore.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,6 +58,8 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
+
+
     private EditText et_search_samsung;
     List<Selling> sellingsList;
     SellingAdapter sellingAdapter;
@@ -79,6 +85,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         carouselView = view.findViewById(R.id.caral);
         imgSamsung= view.findViewById(R.id.imgSamsung);
+
+
 
 
         et_search_samsung=view.findViewById(R.id.et_search_samsung);
@@ -220,6 +228,11 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+
+
+
+
     private void justlaunched() {
        launchedList= new ArrayList<>();
        LaunchedApi launchedApi = Url.getInstance().create(LaunchedApi.class);

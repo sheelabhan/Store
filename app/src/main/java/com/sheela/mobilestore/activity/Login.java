@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login();
+
 
 
                 if (TextUtils.isEmpty(etUserName.getText())) {
@@ -85,6 +85,8 @@ public class Login extends AppCompatActivity {
                     return;
 
 
+                } else{
+                    login();
                 }
 
             }
