@@ -1,6 +1,8 @@
 package com.sheela.mobilestore.ui.home;
 
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,13 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.adapter.ContactsAdapter;
 import com.sheela.mobilestore.adapter.LaunchedAdapter;
@@ -46,6 +53,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
+
     private EditText et_search_samsung;
     List<Selling> sellingsList;
     SellingAdapter sellingAdapter;

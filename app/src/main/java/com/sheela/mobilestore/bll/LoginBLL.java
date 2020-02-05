@@ -11,15 +11,14 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 public class LoginBLL {
+    private String username;
+    private String password;
     boolean isSuccess = false;
 
-    public boolean checkUser(String username, String password) {
-        com.sheela.mobilestore.model.username Username= new username(username, password);
+    public boolean checklogin(String username, String password){
+
         UserAPI usersAPI = Url.getInstance().create(UserAPI.class);
-
-
-        Call<SignUpResponse> usersCall = usersAPI.checklogin(Username);
-
+        Call<SignUpResponse> usersCall = usersAPI.checklogin(username,password);
         try {
             Response<SignUpResponse> loginResponse = usersCall.execute();
             if (loginResponse.isSuccessful() &&

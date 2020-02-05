@@ -127,40 +127,29 @@ public class Login extends AppCompatActivity {
 
         final String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
-
-
         LoginBLL loginBLL = new LoginBLL();
-        com.sheela.mobilestore.model.username Username = new username(username, password);
         StrictMode.StrictMode();
-        UserAPI userapi = Url.getInstance().create(UserAPI.class);
-        Call<SignUpResponse> userCall = userapi.checklogin(Username);
-        userCall.enqueue(new Callback<SignUpResponse>() {
-            @Override
-            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(Login.this, "Code", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Notification notification = new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
-                        setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                        .setContentTitle("Login")
-                        .setContentText(username + " You are login successfully!!")
-                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                        .build();
-                notificationManagerCompat.notify(1, notification);
-                Url.token += response.body().getToken();
-                Intent intent = new Intent(Login.this, HomeActivity.class);
-                startActivity(intent);
+        if(loginBLL.checklogin(username,password)) {
 
 
-            }
+            Notification notification = new NotificationCompat.Builder(Login.this, CreateChannel.CHANNEL_1).
+                    setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                    .setContentTitle("Login")
+                    .setContentText(username + " You are login successfully!!")
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .build();
+            notificationManagerCompat.notify(1, notification);
+            Intent intent = new Intent(Login.this, HomeActivity.class);
+            intent.putExtra("Userlogin",databaseList());
+            startActivity(intent);
+            finish();
 
-            @Override
-            public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                Toast.makeText(Login.this, "error is =" + t.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        }else{
+            Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
+            etUserName.requestFocus();
+        }
+
+
 
     }
 
