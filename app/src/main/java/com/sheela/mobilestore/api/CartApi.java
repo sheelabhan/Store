@@ -26,7 +26,7 @@ public interface CartApi {
     @GET("mycart")
     Call<Cartcrud> getImage(@Header("Authorization") String token);
 
-    @DELETE("mycart")
-    Call<Cartcrud> deleteItems(@Header("Authorization") String token, @Path("_id") String _id);
+    @DELETE("mycart/{xyz}")
+    Call<Cartcrud> deleteItems(@Header("Authorization") String token, @Path("xyz") String _id);
 
 }

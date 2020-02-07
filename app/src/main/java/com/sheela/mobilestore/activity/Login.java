@@ -150,7 +150,7 @@ public class Login extends AppCompatActivity {
             Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
             etUserName.requestFocus();
         }
-
+//
 
 
     }
