@@ -50,12 +50,10 @@
             android:name=".ui.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ui.DashboardActivity" />
-        <activity
-            android:name=".activity.HomeActivity">
+        <activity android:name=".activity.HomeActivity">
 
         </activity>
-            android:label="@string/title_more"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

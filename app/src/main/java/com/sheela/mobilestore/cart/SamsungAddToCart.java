@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.sheela.mobilestore.R;
 import com.sheela.mobilestore.api.MyCartApi;
 import com.sheela.mobilestore.model.Cart;
+import com.sheela.mobilestore.ui.mycart.ToolsFragment;
 import com.sheela.mobilestore.url.Url;
 
 import java.io.InputStream;
@@ -93,7 +95,11 @@ public class SamsungAddToCart extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(SamsungAddToCart.this, "Item added to cart successfully", Toast.LENGTH_SHORT).show();
+
             }
+
+
+
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
