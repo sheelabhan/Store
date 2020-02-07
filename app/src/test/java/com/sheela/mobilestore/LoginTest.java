@@ -44,6 +44,20 @@ public class LoginTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void registerfail(){
+        User user= new User();
+        UserAPI userAPI= Url.getInstance().create(UserAPI.class);
+        Call<SignUpResponse>signUpResponseCall=userAPI.registerUser(user);
+        try{
+            Response<SignUpResponse> register=signUpResponseCall.execute();
+            if(register.isSuccessful() && register.body().getStatus().equals("SignUp Success!")){
+                assertEquals(false,signUpResponseCall);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
 
 
