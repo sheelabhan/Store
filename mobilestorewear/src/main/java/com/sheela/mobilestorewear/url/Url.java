@@ -1,4 +1,4 @@
-package com.sheela.mobilestore.url;
+package com.sheela.mobilestorewear.url;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

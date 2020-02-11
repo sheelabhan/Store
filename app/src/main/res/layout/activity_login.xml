@@ -33,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="User Name"
-        android:text="sheelabhan"
         android:layout_marginTop="25dp"
         android:textSize="30sp"/>
     <EditText
@@ -45,7 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:text="sheela"
         android:layout_marginTop="20dp"
         android:textSize="30sp"/>
     <Button

@@ -12,14 +12,51 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
         app:boxedEdges="all">
 
         <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
+            android:text="Welcome"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:layout_marginTop="15dp"
+            />
+
+        <EditText
+            android:id="@+id/etuname"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="40dp"
+            android:background="#ffffff"
+            android:hint="Username"
+            android:textColor="#000000"
+            />
+
+        <EditText
+
+            android:id="@+id/etpass"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="70dp"
+            android:hint="Password"
+            android:textColor="#000000"
+            android:background="#ffffff"
+            />
+
+
+        <Button
+            android:id="@+id/btnlogin"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:layout_marginTop="100dp"
+
+            />
 
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>

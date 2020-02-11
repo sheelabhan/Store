@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class LoginTest {
@@ -28,7 +29,7 @@ public class LoginTest {
     public void testLoginTest(){
         LoginBLL loginBLL= new LoginBLL();
         boolean result= loginBLL.checklogin("sheelabhan","sheela");
-        assertTrue(result);
+        assertFalse(result);
     }
     @Test
     public void registerpass(){
@@ -52,7 +53,7 @@ public class LoginTest {
         try{
             Response<SignUpResponse> register=signUpResponseCall.execute();
             if(register.isSuccessful() && register.body().getStatus().equals("SignUp Success!")){
-                assertEquals(false,signUpResponseCall);
+                assertEquals(true,signUpResponseCall);
             }
         }catch (IOException e){
             e.printStackTrace();
