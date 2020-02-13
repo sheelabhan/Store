@@ -22,7 +22,7 @@ public class LoginTest {
     @Test
     public void LoginTest(){
      onView(withId(R.id.etUserName))
-             .perform(typeText("sheelabhan"));
+             .perform(typeText("sheelabhandari"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etPassword))
                 .perform(typeText("sheela"));

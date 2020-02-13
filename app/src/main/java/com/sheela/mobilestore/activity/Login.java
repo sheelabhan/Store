@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
     private TextView txtRegister;
     private ImageView insta,facebook;
     private NotificationManagerCompat notificationManagerCompat;
-//    private SensorManager sensorManager;
+ private SensorManager sensorManager;
 
 
     @Override
@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
 
         insta=findViewById(R.id.insta);
 
-       // sensorGyro();
+        sensorGyro();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,37 +155,37 @@ public class Login extends AppCompatActivity {
 
     }
 
-//    private void sensorGyro() {
-//
-//        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-//        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-//
-//        SensorEventListener sensorEventListener = new SensorEventListener() {
-//            @Override
-//            public void onSensorChanged(SensorEvent event) {
-//
-//                if (event.values[1] < 0) {
-//                    login();
-//                    finish();
-//
-//                } else if (event.values[1] > 0) {
-//                    startActivity(new Intent(Login.this,SignUp.class));
-//                }
-//            }
-//
-//            @Override
-//            public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//
-//            }
-//        };
-//
-//        if (sensor != null) {
-//            sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-//
-//        } else {
-//            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    private void sensorGyro() {
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        SensorEventListener sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent event) {
+
+                if (event.values[1] < 0) {
+                    login();
+                    finish();
+
+                } else if (event.values[1] > 0) {
+                    startActivity(new Intent(Login.this,SignUp.class));
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+        };
+
+        if (sensor != null) {
+            sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        } else {
+            Toast.makeText(this, "No sensor found", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }
 
