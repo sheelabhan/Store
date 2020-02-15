@@ -21,20 +21,23 @@ public class RegisterTest {
     public ActivityTestRule<SignUp> testRule= new ActivityTestRule<>(SignUp.class);
     @Test
     public void RegisterTest(){
+        onView(withId(R.id.imgsheela))
+                .perform(click());
+
         onView(withId(R.id.etfirstName))
-                .perform(typeText("sheelu"));
+                .perform(typeText("bibek"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etlastName))
-                .perform(typeText("bhandari"));
+                .perform(typeText("magar"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etPhoneNo))
-                .perform(typeText("9847628337"));
+                .perform(typeText("8887848499"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etUserName))
-                .perform(typeText("sheelabhan"));
+                .perform(typeText("bibekmagar"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etPassword))
-                .perform(typeText("sheela"));
+                .perform(typeText("bibek"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etConfirmPassword))
                 .perform(typeText("sheela"));
