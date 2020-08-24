@@ -26,27 +26,27 @@ public class LoginTest {
             boolean result= loginBLL.checklogin("sheelabha","sheela");
             assertTrue(result);
         }
-    @Test
-    public void testLoginTest(){
-        LoginBLL loginBLL= new LoginBLL();
-        boolean result= loginBLL.checklogin("sheelabhandari","sheela");
-        assertTrue(result);
-    }
-    @Test
-    public void registerpass(){
-        User user = new User("apsara", "subedi","sheelabhandari", "9009890090", "sheela", null);
-        UserAPI userapi = Url.getInstance().create(UserAPI.class);
-        Call<SignUpResponse> signupResponseCall = userapi.registerUser(user);
-        try{
-            Response<SignUpResponse> register=signupResponseCall.execute();
-            if(register.isSuccessful() && register.body().getStatus().equals("SignUp Success!")){
-              actual=true;
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        assertEquals(actual,expected);
-    }
+//    @Test
+//    public void testLoginTest(){
+//        LoginBLL loginBLL= new LoginBLL();
+//        boolean result= loginBLL.checklogin("sheelabhandari","sheela");
+//        assertTrue(result);
+//    }
+//    @Test
+//    public void registerpass(){
+//        User user = new User("apsara", "subedi","sheelabhandari", "9009890090", "sheela", null);
+//        UserAPI userapi = Url.getInstance().create(UserAPI.class);
+//        Call<SignUpResponse> signupResponseCall = userapi.registerUser(user);
+//        try{
+//            Response<SignUpResponse> register=signupResponseCall.execute();
+//            if(register.isSuccessful() && register.body().getStatus().equals("SignUp Success!")){
+//              actual=true;
+//            }
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+//        assertEquals(actual,expected);
+//    }
     @Test
     public void registerfail(){
         User user = new User("apsara", "subedi","sheelabhandari", "9009890090", "sheela", null);
